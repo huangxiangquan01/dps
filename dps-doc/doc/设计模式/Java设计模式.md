@@ -1,9 +1,9 @@
 # **一、什么是设计模式**
 设计模式（Design pattern） 是解决软件开发某些特定问题而提出的一些解决方案也可以理解成解决问题的一些思路。通过设计模式可以帮助我们增强代码的可重用性、可扩充性、 可维护性、灵活性好。我们使用设计模式最终的目的是实现代码的高内聚和低耦合。
 # 二、设计模式的三大分类及关键点
-![image](./file/IMG_19AD0DA3F1CA-1.jpeg)
+![image](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/IMG_19AD0DA3F1CA-1.jpeg?versionId=CAEQERiBgMCMhrbc0xciIGQ3YjNlYjU3NmIyZjQyZjM5NzYyM2NlNmZmNGMwZWVl)
 ### 1、创建型模式
-对象实例化的模式，创建型模式用于解耦对象的实例化过程。
+对象实例化的模式，创建型模式用于解耦对象的实例化过程。 
 
 1. [单例模式](./单例模式.md)：某个类智能有一个实例，提供一个全局的访问点。
 1. [工厂模式](./工厂模式.md)：一个工厂类根据传入的参量决定创建出哪一种产品类的实例。

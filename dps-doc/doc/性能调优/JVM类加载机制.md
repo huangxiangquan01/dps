@@ -219,7 +219,7 @@ jsp修改，其实就是实现jsp的热加载，实现机制就是每个jsp文�
 1. WebappClassLoader：各个Webapp私有的类加载器，加载路径中的class只对当前 Webapp可见，比如加载war包里相关的类，每个war包应用都有自己的WebappClassLoader，实现相互隔离，比如不同war包应用引入了不同的spring版本， 这样实现就能加载各自的spring版本。
 
 **tomcat自定义加载器详解图**：
-
+![image](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/tomcat类加载器.jpeg?versionId=CAEQERiBgID0oMHc0xciIDY0NzA2NjIwYzg1OTRjM2E5Zjk1MDE0MGQ1MmRlNGFj)
 图中可以看出：
 1. CommonClassLoader能加载的类都可以被CatalinaClassLoader和SharedClassLoader使用， 从而实现了公有类库的共用。
 1. CatalinaClassLoader和SharedClassLoader自己能加载的类则与对方相互隔离。

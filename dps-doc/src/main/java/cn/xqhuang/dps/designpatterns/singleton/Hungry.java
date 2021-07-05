@@ -1,4 +1,4 @@
-package cn.xqhuang.dps.singleton;
+package cn.xqhuang.dps.designpatterns.singleton;
 
 /**
  * @author huangxq
