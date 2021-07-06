@@ -1,4 +1,4 @@
-package cn.xqhuang.dps.classloader;
+package cn.xqhuang.dps.classLoader;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -40,7 +40,7 @@ public class MyClassLoaderTest {
 
     public static void main(String[] args) throws Exception{
         MyClassLoader classLoader = new MyClassLoader("/Users/huangxq/Desktop");
-        Class clazz = classLoader.loadClass("cn.xqhuang.dps.classloader.User");
+        Class clazz = classLoader.loadClass("cn.xqhuang.dps.classLoader.User");
         Object obj = clazz.newInstance();
         Method method = clazz.getDeclaredMethod("sout", null);
         method.invoke(obj, null);

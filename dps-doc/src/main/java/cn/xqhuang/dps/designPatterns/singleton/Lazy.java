@@ -1,4 +1,4 @@
-package cn.xqhuang.dps.designpatterns.singleton;
+package cn.xqhuang.dps.designPatterns.singleton;
 
 
 /**

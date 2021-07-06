@@ -145,7 +145,7 @@ protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundE
             return c;
         }
     }  
-```
+````
 #### 为什么要设计双亲委派机制
 - 沙箱安全机制：防止核心API库被随意篡改
 - 避免类的重复加载
@@ -190,7 +190,7 @@ public class MyClassLoaderTest {
 
     public static void main(String[] args) throws Exception{
         MyClassLoader classLoader = new MyClassLoader("/Users/huangxq/Desktop");
-        Class clazz = classLoader.loadClass("cn.xqhuang.dps.classloader.User");
+        Class clazz = classLoader.loadClass("cn.xqhuang.dps.classLoader.User");
         Object obj = clazz.newInstance();
         Method method = clazz.getDeclaredMethod("sout", null);
         method.invoke(obj, null);

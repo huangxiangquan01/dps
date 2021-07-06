@@ -1,4 +1,4 @@
-package cn.xqhuang.dps.classloader;
+package cn.xqhuang.dps.classLoader;
 
 public class Math {
 
