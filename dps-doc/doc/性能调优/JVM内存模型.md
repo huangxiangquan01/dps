@@ -19,6 +19,7 @@ public class Math {
     }
 }
 ```
+
 ![内存模型](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/JVM内存模型.png?versionId=CAEQERiBgICGwbDw0xciIGM0MGJhYTcxN2I3YTRkYzY4MmNjY2JmNDhkMGMzNjRj)
 
 

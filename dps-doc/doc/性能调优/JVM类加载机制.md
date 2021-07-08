@@ -47,8 +47,7 @@ public class Math {
 ### 类加载器初始化过程
   1. 创建JVM虚拟机启动实例sun.misc.Launcher
   1. sun.misc.Launcher初始化使用单例模式，保存一个JVM虚拟机内只有一个sun.misc.Launcher实例
-  1. 在Launcher构造方法内部，其创建了两个类加载器放别是sun.misc.Launcher.ExtClassLoader
-  和sun.misc.Launcher.AppClassLoader
+  1. 在Launcher构造方法内部，其创建了两个类加载器放别是sun.misc.Launcher.ExtClassLoader和sun.misc.Launcher.AppClassLoader
   1. JVM使用Launcher的getClassLoader()方法返回类加载器AppClassLoader实例加载应用程序
 ```
 //Launcher 的构造方法
