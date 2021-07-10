@@ -36,12 +36,16 @@ Serial（串行）收集器是最基本、历史最悠久的垃圾收集器了�
 Parallel Scavenge收集器提供了很多参数供用户找到最合适的停顿时间或最大吞吐量，如果对于收集器运作不太了解的话，可以 选择把内存管理优化交给虚拟机去完成也是一个不错的选择。
 
 **新生代采用复制算法，老年代采用标记-整理算法**。
+
 ![Parallel](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/Parallel.png?versionId=CAEQERiBgMDE2NXD1BciIGMwNWU2NzgzNmYwZDQ1ZTc5NWExMjZlNTZjOTViNTIy)
+
 **Parallel Old收集器是Parallel Scavenge收集器的老年代版本**。使用多线程和“标记-整理”算法。在注重吞吐量以及CPU资源的场合，都可以优先考虑 Parallel Scavenge收集器和Parallel Old收集器(JDK8默认的新生代和老年代收集 器)。
 
 ### ParNew收集器(-XX:+UseParNewGC) 
 **ParNew收集器其实跟Parallel收集器很类似**，区别主要在于它可以和CMS收集器配合使用。 
+
 ![ParNew](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/Parallel.png?versionId=CAEQERiBgMDE2NXD1BciIGMwNWU2NzgzNmYwZDQ1ZTc5NWExMjZlNTZjOTViNTIy)
+
 **新生代采用复制算法，老年代采用标记-整理算法**。
 
 它是许多运行在Server模式下的虚拟机的首要选择，除了Serial收集器外，只有它能与CMS收集器（真正意义上的并发收集器，后面会介绍到）配合工作。
