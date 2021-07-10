@@ -26,7 +26,7 @@ Serial（串行）收集器是最基本、历史最悠久的垃圾收集器了�
 
 **新生代采用复制算法，老年代采用标记-整理算法**。
  
-![Serial](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/Serial.png?versionId=CAEQERiBgICDuLjD1BciIDE1OTYyMTdhYjEyODRjYTc4ODZjMDIyNTgyNWVhNDE0)
+![Serial](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/Serial.png?versionId=CAEQERiBgMDI2NXD1BciIGFhNWExNmVkODI0MDRlNThiNjBjMGM1ZjYyMGZkMzVk)
 
 虚拟机的设计者们当然知道Stop The World带来的不良用户体验，所以在后续的垃圾收集器设计中停顿时间在不断缩短（仍然还有停顿，寻找最优秀的垃圾收集器的过程仍然在继续）。 但是Serial收集器有没有优于其他垃圾收集器的地方呢？当然有，它简单而高效（与其他收集器的单线程相比）。Serial 收集器由于没有线程交互的开销，自然可以获得很高的单线程收集效率。 **Serial Old收集器是Serial收集器的老年代版本**，它同样是一个单线程收集器。它主要有两大用途：一种用途是在JDK1.5 以及以前的版本中与Parallel Scavenge收集器搭配使用，**另一种用途是作为CMS收集器的后备方案**。
 
@@ -36,12 +36,12 @@ Serial（串行）收集器是最基本、历史最悠久的垃圾收集器了�
 Parallel Scavenge收集器提供了很多参数供用户找到最合适的停顿时间或最大吞吐量，如果对于收集器运作不太了解的话，可以 选择把内存管理优化交给虚拟机去完成也是一个不错的选择。
 
 **新生代采用复制算法，老年代采用标记-整理算法**。
-![Parallel](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/Parallel.png?versionId=CAEQERiBgICmuLjD1BciIDVlZWI2ZTdlNmQwNzRlNDVhZTQxN2Q5YmZlZjBiMmZk)
+![Parallel](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/Parallel.png?versionId=CAEQERiBgMDE2NXD1BciIGMwNWU2NzgzNmYwZDQ1ZTc5NWExMjZlNTZjOTViNTIy)
 **Parallel Old收集器是Parallel Scavenge收集器的老年代版本**。使用多线程和“标记-整理”算法。在注重吞吐量以及CPU资源的场合，都可以优先考虑 Parallel Scavenge收集器和Parallel Old收集器(JDK8默认的新生代和老年代收集 器)。
 
 ### ParNew收集器(-XX:+UseParNewGC) 
 **ParNew收集器其实跟Parallel收集器很类似**，区别主要在于它可以和CMS收集器配合使用。 
-![ParNew](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/Parallel.png?versionId=CAEQERiBgICmuLjD1BciIDVlZWI2ZTdlNmQwNzRlNDVhZTQxN2Q5YmZlZjBiMmZk)
+![ParNew](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/Parallel.png?versionId=CAEQERiBgMDE2NXD1BciIGMwNWU2NzgzNmYwZDQ1ZTc5NWExMjZlNTZjOTViNTIy)
 **新生代采用复制算法，老年代采用标记-整理算法**。
 
 它是许多运行在Server模式下的虚拟机的首要选择，除了Serial收集器外，只有它能与CMS收集器（真正意义上的并发收集器，后面会介绍到）配合工作。
@@ -54,7 +54,7 @@ CMS收集器是一种 “标记-清除”算法实现的，它的运作过程相
 - **并发清理**： 开启用户线程，同时GC线程开始对未标记的区域做清扫。这个阶段如果有新增对象会被标记为黑色不做任何处理(见下面三色标记算法详解)。 
 - **并发重置**：重置本次GC过程中的标记数据。
 
-![cms](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/cms.png?versionId=CAEQERiBgMCWuLjD1BciIDg1OGQxZThmOTBjNjRjMzhhZGJiNjllZmNjYjJmNzUy)
+![cms](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/cms.png?versionId=CAEQERiBgMCB2dXD1BciIDdlNGI1NTMwM2RhMDRkNjg5MjFmYWQ4OWQ4OWZiYzA5)
 
 主要优点：并发收集、低停顿。
 
