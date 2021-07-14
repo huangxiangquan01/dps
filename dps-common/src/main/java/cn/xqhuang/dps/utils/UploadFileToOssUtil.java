@@ -12,7 +12,6 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.Objects;
 
-@Slf4j
 public class UploadFileToOssUtil {
 
     private static String endPoint = "";

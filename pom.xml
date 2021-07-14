@@ -15,6 +15,7 @@
     <module>dps-doc</module>
     <module>dps-common</module>
     <module>dps-gateway</module>
+    <module>dps-servlet</module>
   </modules>
   
   <groupId>cn.xqhuang.dps</groupId>
