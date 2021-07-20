@@ -47,7 +47,7 @@ INSERT INTO `film_actor` (`id`, `film_id`, `actor_id`) VALUES (1,1,1),(2,1,2),(3
 >    explain select * from film where id = 1;
 
 |   Id      | select_type  | table      | partitions  |type     |possible_key  | key  |key_len  |ref    | rows    |filtered  | Extra  |
-|  :----:   | :----:         | :----:   | :----:      |:----   |:----:        |:----:  |:----:  |:----:  |:----:  |:----:    | :---- : | 
+|  :----:   | :----:         | :----:   | :----:      |:----:   |:----:        |:----:  |:----:  |:----:  |:----:  |:----:    | :---- : | 
 | 1         | SIMPLE        | film     |               |const  | PRIMARY      |PRIMARY | 4    | const    | 1      |100       | 单元格 |
 
 ## Explain中的列
@@ -88,7 +88,7 @@ select_type 表示对应行是简单还是复杂的查询。
 >  explain select * from film_actor left join film on film_actor.film_id = film.id;
 
 |   Id      | select_type  | table      | partitions  |type     |possible_key  | key  |key_len  |ref    | rows    |filtered  | Extra  |
-|  :----:   | :----:         | :----:   | :----:      |:----   |:----:        |:----:  |:----:  |:----:  |:----:  |:----:    | :---- : | 
+|  :----:   | :----:         | :----:   | :----:      |:----:   |:----:        |:----:  |:----:  |:----:  |:----:  |:----:    | :---- : | 
 | 1         | SIMPLE        | film_actor |             |ALL   |       |        |        |         |      3    |   100   |     |
 | 1         | SIMPLE        | film     |               |eq_ref  | PRIMARY      |PRIMARY | 4    | test.film_actor.film_id    | 1      |100      |  |
 
@@ -181,17 +181,17 @@ key_len计算规则如下：
      >  EXPLAIN SELECT * FROM employees WHERE name= 'LiLei'; 
 
      |   Id      | select_type  | table      | partitions  |type     |possible_key  | key  |key_len  |ref    | rows    |filtered  | Extra  |
-     |  :----:   | :----:         | :----:   | :----:      |:----   |:----:        |:----:  |:----:  |:----:  |:----:  |:----:    | :---- : | 
+     |  :----:   | :----:         | :----:   | :----:      |:----:   |:----:        |:----:  |:----:  |:----:  |:----:  |:----:    | :---- : | 
      | 1         | SIMPLE        | employees   |     |ref  | idx_name_age_position      |idx_name_age_position |  74    | const    | 1      |  100     | |
       >  EXPLAIN SELECT * FROM employees WHERE name= 'LiLei' AND age = 22;  
     
      |   Id      | select_type  | table      | partitions  |type     |possible_key  | key  |key_len  |ref    | rows    |filtered  | Extra  |
-     |  :----:   | :----:         | :----:   | :----:      |:----   |:----:        |:----:  |:----:  |:----:  |:----:  |:----:    | :---- : | 
+     |  :----:   | :----:         | :----:   | :----:      |:----:   |:----:        |:----:  |:----:  |:----:  |:----:  |:----:    | :---- : | 
      | 1         | SIMPLE        | employees   |     |ref  | idx_name_age_position      |idx_name_age_position |  78    | const,const    | 1      |  100     | |                                                                                                                                                                                                                                                                                   
       >  EXPLAIN SELECT * FROM employees WHERE name= 'LiLei' AND age = 22  position ='manager';
     
      |   Id      | select_type  | table      | partitions  |type     |possible_key  | key  |key_len  |ref    | rows    |filtered  | Extra  |
-     |  :----:   | :----:         | :----:   | :----:      |:----   |:----:        |:----:  |:----:  |:----:  |:----:  |:----:    | :---- : | 
+     |  :----:   | :----:         | :----:   | :----:      |:---- :  |:----:        |:----:  |:----:  |:----:  |:----:  |:----:    | :---- : | 
      | 1         | SIMPLE        | employees   |     |ref  | idx_name_age_position      |idx_name_age_position |  140    | const,const,const    | 1      |  100     | |  
      
 1. 最左前缀法则
