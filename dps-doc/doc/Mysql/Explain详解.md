@@ -78,7 +78,7 @@ select_type 表示对应行是简单还是复杂的查询。
 >  explain select min(id) from film;
 
 - **const, system**:：mysql能对查询的某部分进行优化并将其转化成一个常量。用于 primary key 或 unique key 的所有列与常数比较时，所以表最多有一个匹配行，读取1次，速度比较快。system是 const的特例，表里只有一条元组匹配时为system   
-> explain extended select * from (select * from film where id = 1) tmp;                  
+> explain select * from (select * from film where id = 1) tmp;                  
 
 |   Id      | select_type  | table      | partitions  |type     |possible_key  | key  |key_len  |ref    | rows    |filtered  | Extra  |
 |  :----:   | :----:         | :----:   | :----:      |:----   |:----:        |:----:  |:----:  |:----:  |:----:  |:----:    | :---- : | 
@@ -93,10 +93,10 @@ select_type 表示对应行是简单还是复杂的查询。
 | 1         | SIMPLE        | film     |               |eq_ref  | PRIMARY      |PRIMARY | 4    | test.film_actor.film_id    | 1      |100      |  |
 
 - **ref**：相比 eq_ref，不使用唯一索引，而是使用普通索引或者唯一性索引的部分前缀，索引要和某个值相比较，可能会找到多个符合条件的行。
- 1. 简单 select 查询，name是普通索引（非唯一索引）
-    > explain select * from film where name = 'film1';
- 1. 关联表查询，idx_film_actor_id是film_id和actor_id的联合索引，这里使用到了film_actor的左边前缀film_id部分。
-    > explain select film_id from film left join film_actor on film.id = film_actor.film_id;
+     1. 简单 select 查询，name是普通索引（非唯一索引）
+        > explain select * from film where name = 'film1';
+     1. 关联表查询，idx_film_actor_id是film_id和actor_id的联合索引，这里使用到了film_actor的左边前缀film_id部分。
+        > explain select film_id from film left join film_actor on film.id = film_actor.film_id;
 
 - **range**：范围扫描通常出现在 in(), between ,> ,<, >= 等操作中。使用一个索引来检索给定范围的行。
     > explain select * from actor where id > 1; 
@@ -140,6 +140,7 @@ key_len计算规则如下：
 
 ### 10. Extra列
 1. **Using index**：使用覆盖索引
+
    **覆盖索引定义**：mysql执行计划explain结果里的key有使用索引，如果select后面查询的字段都可以从这个索引的树中 获取，这种情况一般可以说是用到了覆盖索引，extra里一般都有using index；覆盖索引一般针对的是辅助索引，整个 查询结果只通过辅助索引就能拿到结果，不需要通过辅助索引树找到主键，再通过主键去主键索引树里获取其它字段值
     > explain select film_id from film_actor where film_id = 1;
 1. **Using where**：使用 where 语句来处理结果，并且查询的列未被索引覆盖                                                                                                                                                                                                                 
