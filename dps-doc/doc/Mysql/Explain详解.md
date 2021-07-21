@@ -47,7 +47,7 @@ INSERT INTO `film_actor` (`id`, `film_id`, `actor_id`) VALUES (1,1,1),(2,1,2),(3
 >    explain select * from film where id = 1;
 
 |   Id      | select_type  | table      | partitions  |type     |possible_key  | key  |key_len  |ref    | rows    |filtered  | Extra  |
-|  :----:   | :----:         | :----:   | :----:      |:----:   |:----:        |:----:  |:----:  |:----:  |:----:  |:----:    | :---- : | 
+|  :----  | :----        | :----   | :----      |:----  |:----        |:----  |:---- |:----  |:----  |:----    | :----  | 
 | 1         | SIMPLE        | film     |               |const  | PRIMARY      |PRIMARY | 4    | const    | 1      |100       | 单元格 |
 
 ## Explain中的列
