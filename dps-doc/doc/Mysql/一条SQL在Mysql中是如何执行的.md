@@ -1,4 +1,4 @@
-## MySQL的内部组件结构
+# MySQL的内部组件结构
 ![组件结构](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/一条sql是如何执行的.png?versionId=CAEQERiBgMDa0JSl1hciIDJiMGE3YmE2ZGJiNDQwZDlhMDAxMTIxNzBlYzc4ZWEy)
 
 ### Server层
@@ -27,7 +27,7 @@ Mysql 查询不建议使用缓存，因为对于经常更新的数据来说，�
 mysql 没有命中缓存，那么就会进入分析器，
     1. **第一步，词法分析**，一条SQL语句有多个字符串组成，首先要提取关键字，比如select，提出查询的表，提出字段名，提出查询条件等等。做完这些操作后，就会进入第二步。
     1. **第二步，语法分析**，主要就是判断你输入的sql是否正确，是否符合mysql的语法。
-    
+
 ### 优化器
 优化器的作用就是它认为的最优的执行方案去执行（虽然有时候也不是最优），比如多个索引的时候该如何选择索引，多表查询的时候如何选择关联顺序等。
 
