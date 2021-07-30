@@ -1,7 +1,8 @@
 ## Java语言的跨平台特性
 ![跨平台特性](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/java跨平台特性.png?versionId=CAEQERiBgMC3wLDw0xciIDY1ZjllYjg5NDRhOTRkMzA4NDI3ZDEwMDM2MDMxYTM5)
 
-##JVM整体结构及内存模型
+## JVM整体结构及内存模型
+
 ```java
 public class Math {
     public static final int initData = 666;
