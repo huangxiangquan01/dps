@@ -2,6 +2,9 @@ package cn.xqhuang.dps.classLoader;
 
 import org.openjdk.jol.info.ClassLayout;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class JOLSample {
 
     public static void main(String[] args) { 
@@ -14,8 +17,8 @@ public class JOLSample {
         
          System.out.println(); 
          ClassLayout layout2 = ClassLayout.parseInstance(new A()); 
-         System.out.println(layout2.toPrintable()); 
-    } 
+         System.out.println(layout2.toPrintable());
+    }
 
     // ‐XX:+UseCompressedOops 默认开启的压缩所有指针  
     // ‐XX:+UseCompressedClassPointers 默认开启的压缩对象头里的类型指针Klass Pointer  
@@ -26,6 +29,6 @@ public class JOLSample {
         int id; //4B 
         String name; //4B 如果关闭压缩‐XX:‐UseCompressedOops，则占用8B 
         byte b; //1B 
-        Object o; //4B 如果关闭压缩‐XX:‐UseCompressedOops，则占用8B 
+        Object o; //4B 如果关闭压缩‐XX:‐UseCompressedOops，则占用8B
     }
 }
