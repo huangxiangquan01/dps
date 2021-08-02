@@ -74,7 +74,7 @@ select_type 表示对应行是简单还是复杂的查询。
 
 依次从最优到最差分别为：system > const > eq_ref > ref > range > index > ALL  得保证查询达到range级别，最好达到ref
 
-- **NULL**：mysql能够在优化阶段分解查询语句，在执行阶段用不着再访问表或索引。例如：在索引列中选取最小值，可 以单独查找索引来完成，不需要在执行时访问表 
+- **NULL**：mysql能够在优化阶段分解查询语句，在执行阶段用不着再访问表或索引。例如：在索引列中选取最小值，可以单独查找索引来完成，不需要在执行时访问表 
 >  explain select min(id) from film;
 
 - **const, system**:：mysql能对查询的某部分进行优化并将其转化成一个常量。用于 primary key 或 unique key 的所有列与常数比较时，所以表最多有一个匹配行，读取1次，速度比较快。system是 const的特例，表里只有一条元组匹配时为system   
