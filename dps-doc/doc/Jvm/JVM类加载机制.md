@@ -150,7 +150,7 @@ protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundE
 - 避免类的重复加载
 
 #### 全盘负责委托机制
-​		"全盘负责" 是指当一个ClassLoader装载一个类时，除非显示的使用另外一个ClassLoader，该类所依赖及引用的类也由这个ClassLoader载入。
+​		"全盘负责"是指当一个ClassLoader装载一个类时，除非显示的使用另外一个ClassLoader，该类所依赖及引用的类也由这个ClassLoader载入。
 
 #### 自定义类加载示例
 ​		自定义类加载只需要继承java.lang.CLassLoader类，该类有两个核心方法，一个是loadClass(String, boolean),实现临双亲委派机制，还有一个方法是findClass，

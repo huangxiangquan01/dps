@@ -188,6 +188,6 @@ public static SoftReference<User> user = new SoftReference<User>(new User());
 
 ### 如何判断一个类是无用的类
 类需要同时满足下面3个条件才能算是 “无用的类” ：
-- 该类所有的实例都已经被回收，也就是 Java 堆中不存在该类的任何实例。 
+- 该类所有的实例都已经被回收，也就是Java堆中不存在该类的任何实例。 
 - 加载该类的 ClassLoader 已经被回收。 
 - 该类对应的 java.lang.Class 对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。
