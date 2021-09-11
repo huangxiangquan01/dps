@@ -86,7 +86,7 @@ public class CircularDependency {
         }
 
         //initMethod
-
+        System.out.println("-------initMethod------");
         // afterInitializationBeanPostProcessor
 
         if (earlySingletonObjects.containsKey(beanName)) {
