@@ -111,7 +111,7 @@ ZGC的Region可以具有大、 中、 小三类容量：
 ZGC的运作过程大致可划分为以下四个大的阶段：
 ![ZGC](https://xqhuang.oss-cn-beijing.aliyuncs.com/study/ZGC.png?versionId=CAEQERiBgIDAv._R1BciIDY0Y2NkYTA3ZmM1MDQyOGU4MzQxNTUzZGFhZGVmZmU2)
 - **并发标记（Concurrent Mark）**：与G1一样，并发标记是遍历对象图做可达性分析的阶段，它的初始标记 (Mark Start)和最终标记(Mark End)也会出现短暂的停顿，与G1不同的是， ZGC的标记是在指针上而不是在对象上进行的， 标记阶段会更新染色指针中的Marked 0、 Marked 1标志位。
-- **并发预备重分配（Concurrent Prepare for Relocate）**：这个阶段需要根据特定的查询条件统计得出本次收 集过程要清理哪些Region，将这些Region组成重分配集（Relocation Set）。ZGC每次回收都会扫描所有的 Region，用范围更大的扫描成本换取省去G1中记忆集的维护成本。
+- **并发预备重分配（Concurrent Prepare for Relocate）**：这个阶段需要根据特定的查询条件统计得出本次收集过程要清理哪些Region，将这些Region组成重分配集（Relocation Set）。ZGC每次回收都会扫描所有的 Region，用范围更大的扫描成本换取省去G1中记忆集的维护成本。
 - 并发重分配（Concurrent Relocate）：重分配是ZGC执行过程中的核心阶段，这个过程要把重分配集中的存活对象复制到新的Region上，并为重分配集中的每个Region维护一个转发表（Forward Table），记录从旧对象到新对象的转向关系。ZGC收集器能仅从引用上就明确得知一个对象是否处于重分配集之中，如果用户线程此时并发访问了位于重分配集中的对象，这次访问将会被预置的内存屏障(读屏障)所截获，然后立即根据Region上的转发 表记录将访问转发到新复制的对象上，并同时修正更新该引用的值，使其直接指向新对象，ZGC将这种行为称为指针的“自愈”（Self-Healing）能力。 
 > 1. ZGC的颜色指针因为“自愈”（Self‐Healing）能力，所以只有第一次访问旧对象会变慢， 一旦重分配集中某个Region的存活对象都复制完毕 后，
 > 1. 这个Region就可以立即释放用于新对象的分配，但是转发表还得留着不能释放掉，因为可能还有访问在使用这个转发表。
