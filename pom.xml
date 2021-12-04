@@ -14,6 +14,7 @@
     <module>dps-admin</module>
     <module>dps-doc</module>
     <module>dps-common</module>
+    <module>dps-zookeeper</module>
     <module>dps-gateway</module>
     <module>dps-servlet</module>
   </modules>
@@ -88,7 +89,24 @@
         <artifactId>spring-context</artifactId>
         <version>5.2.13.RELEASE</version>
       </dependency>
-
+  
+      <!-- dom4j，xml包 -->
+      <dependency>
+        <groupId>dom4j</groupId>
+        <artifactId>dom4j</artifactId>
+        <version>1.6.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpmime</artifactId>
+        <version>4.3.2</version>
+      </dependency>
+  
+      <dependency>
+        <groupId>org.apache.zookeeper</groupId>
+        <artifactId>zookeeper</artifactId>
+        <version>3.5.8</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   
