@@ -15,8 +15,10 @@
     <module>dps-doc</module>
     <module>dps-common</module>
     <module>dps-zookeeper</module>
+    <module>dps-rabbit</module>
     <module>dps-gateway</module>
     <module>dps-servlet</module>
+    <module>dps-selenium</module>
   </modules>
   
   <groupId>cn.xqhuang.dps</groupId>
