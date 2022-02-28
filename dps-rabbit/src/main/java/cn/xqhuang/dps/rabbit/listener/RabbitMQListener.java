@@ -1,4 +1,4 @@
-package cn.xqhuang.dps.listener;
+package cn.xqhuang.dps.rabbit.listener;
 
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

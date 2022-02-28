@@ -16,6 +16,7 @@
     <module>dps-common</module>
     <module>dps-zookeeper</module>
     <module>dps-rabbit</module>
+    <module>dps-rocket</module>
     <module>dps-gateway</module>
     <module>dps-servlet</module>
     <module>dps-selenium</module>
