@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: rocket
+server:
+  port: 7999

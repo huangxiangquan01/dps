@@ -15,6 +15,7 @@
     <module>dps-doc</module>
     <module>dps-common</module>
     <module>dps-zookeeper</module>
+    <module>dps-kafka</module>
     <module>dps-rabbit</module>
     <module>dps-rocket</module>
     <module>dps-gateway</module>
