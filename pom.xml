@@ -7,7 +7,6 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.2.5.RELEASE</version>
-    <relativePath/>
   </parent>
   
   <modules>
@@ -21,6 +20,7 @@
     <module>dps-gateway</module>
     <module>dps-servlet</module>
     <module>dps-selenium</module>
+    <module>dps-mongo</module>
   </modules>
   
   <groupId>cn.xqhuang.dps</groupId>
@@ -77,33 +77,23 @@
         <version>0.9</version>
       </dependency>
   
-      <!-- 1.Spring核心依赖 -->
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-core</artifactId>
-        <version>5.2.13.RELEASE</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-beans</artifactId>
-        <version>5.2.13.RELEASE</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-context</artifactId>
-        <version>5.2.13.RELEASE</version>
-      </dependency>
-  
       <!-- dom4j，xml包 -->
       <dependency>
         <groupId>dom4j</groupId>
         <artifactId>dom4j</artifactId>
         <version>1.6.1</version>
       </dependency>
+      
       <dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpmime</artifactId>
         <version>4.3.2</version>
+      </dependency>
+  
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>1.1.23</version>
       </dependency>
   
       <dependency>

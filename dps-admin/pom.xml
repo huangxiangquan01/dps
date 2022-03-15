@@ -22,7 +22,6 @@
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>druid-spring-boot-starter</artifactId>
-      <version>1.1.23</version>
     </dependency>
     <!-- mysql8 驱动-->
     <dependency>
@@ -51,12 +50,6 @@
           <artifactId>HikariCP</artifactId>
         </exclusion>
       </exclusions>
-    </dependency>
-  
-    <!--SpringBoot 的aop 模块-->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-aop</artifactId>
     </dependency>
   </dependencies>
 </project>
