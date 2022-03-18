@@ -21,6 +21,7 @@
     <module>dps-servlet</module>
     <module>dps-selenium</module>
     <module>dps-mongo</module>
+    <module>dps-shardingsphere</module>
   </modules>
   
   <groupId>cn.xqhuang.dps</groupId>
