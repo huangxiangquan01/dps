@@ -22,6 +22,7 @@
     <module>dps-selenium</module>
     <module>dps-mongo</module>
     <module>dps-shardingsphere</module>
+    <module>dps-netty</module>
   </modules>
   
   <groupId>cn.xqhuang.dps</groupId>
