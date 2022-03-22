@@ -2,7 +2,6 @@ package cn.xqhuang.dps.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -52,9 +51,25 @@ public class NioSelectorServer {
                         // 如果有数据，把数据打印出来
                         if (read > 0) {
                             System.out.println("接收到消息：" + new String(byteBuffer.array(), 0, read));
+
+
+                            String respMsg = "BAD ORDER";
+                            byte[] resp = respMsg.getBytes("utf-8");
+                            ByteBuffer respBb = ByteBuffer
+                                    .allocate(resp.length);
+                            respBb.put(resp);
+                            respBb.flip();
+
+                            socketChannel.register(key.selector(), SelectionKey.OP_WRITE, respBb);
                         } else if (read == -1) { // 如果客户端断开连接，关闭Socket
                             System.out.println("客户端断开连接");
                             socketChannel.close();
+                        }
+                    } else if (key.isWritable()) {
+                        ByteBuffer bb = (ByteBuffer) key.attachment();
+                        if (bb.hasRemaining()) {
+                            SocketChannel sc = (SocketChannel) key.channel();
+                            sc.write(bb);
                         }
                     }
                     //从事件集合里删除本次处理的key，防止下次select重复处理
