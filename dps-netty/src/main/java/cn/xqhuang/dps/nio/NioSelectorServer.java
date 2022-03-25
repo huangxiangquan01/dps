@@ -55,8 +55,7 @@ public class NioSelectorServer {
 
                             String respMsg = "BAD ORDER";
                             byte[] resp = respMsg.getBytes("utf-8");
-                            ByteBuffer respBb = ByteBuffer
-                                    .allocate(resp.length);
+                            ByteBuffer respBb = ByteBuffer.allocate(resp.length);
                             respBb.put(resp);
                             respBb.flip();
 
