@@ -76,3 +76,7 @@ spring:
 
 # spring 监控
 # spring.datasource.druid.aop-patterns="com.springboot.template.dao.*"
+
+dps:
+  config:
+    user-name: xqhuang
