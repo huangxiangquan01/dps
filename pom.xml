@@ -18,6 +18,7 @@
     <module>dps-kafka</module>
     <module>dps-rabbit</module>
     <module>dps-rocket</module>
+    <module>dps-dubbo</module>
     <module>dps-gateway</module>
     <module>dps-servlet</module>
     <module>dps-selenium</module>
