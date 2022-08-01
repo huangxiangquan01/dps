@@ -1,7 +1,8 @@
 package cn.xqhuang.dps.service;
 
 
-public interface HelloService {
+public interface DemoService {
 
     String sayHello(String name);
+
 }

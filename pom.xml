@@ -25,6 +25,8 @@
     <module>dps-mongo</module>
     <module>dps-shardingsphere</module>
     <module>dps-netty</module>
+    <module>dps-websocket</module>
+    <module>dps-elasticsearch</module>
   </modules>
   
   <groupId>cn.xqhuang.dps</groupId>
@@ -39,6 +41,7 @@
     <java.version>1.8</java.version>
     <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
     <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+    <dubbo.version>2.7.5</dubbo.version>
   </properties>
   
   <dependencyManagement>
@@ -104,6 +107,26 @@
         <groupId>org.apache.zookeeper</groupId>
         <artifactId>zookeeper</artifactId>
         <version>3.5.8</version>
+      </dependency>
+  
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>${dubbo.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
     </dependencies>
   </dependencyManagement>
