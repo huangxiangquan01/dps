@@ -1,0 +1,7 @@
+server:
+  port: 8080
+
+spring:
+  elasticsearch:
+    rest:
+      uris: 124.70.60.64:9200
