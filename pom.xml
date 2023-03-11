@@ -14,13 +14,19 @@
     <module>dps-actuator</module>
     <module>dps-druid</module>
     <module>dps-doc</module>
+    <module>dps-code-gen</module>
     <module>dps-common</module>
     <module>dps-zookeeper</module>
     <module>dps-config-spring-boot-start</module>
+    <module>dps-redis</module>
+    <module>dps-security</module>
+    <module>dps-security-oauth2</module>
+    <module>dps-dynamic-data-source</module>
     <module>dps-kafka</module>
     <module>dps-rabbit</module>
     <module>dps-rocket</module>
     <module>dps-dubbo</module>
+    <module>dps-prometheus</module>
     <module>dps-gateway</module>
     <module>dps-servlet</module>
     <module>dps-selenium</module>
@@ -105,11 +111,19 @@
         <version>1.1.23</version>
       </dependency>
   
+      <!-- mybatisplus依赖 -->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>3.0.5</version>
+      </dependency>
+  
       <dependency>
         <groupId>de.codecentric</groupId>
         <artifactId>spring-boot-admin-starter-client</artifactId>
         <version>2.2.4</version>
       </dependency>
+      
   
       <dependency>
         <groupId>de.codecentric</groupId>
@@ -121,6 +135,28 @@
         <groupId>org.apache.zookeeper</groupId>
         <artifactId>zookeeper</artifactId>
         <version>3.5.8</version>
+      </dependency>
+  
+      <!--pdf生成 itext-->
+      <dependency>
+        <groupId>org.freemarker</groupId>
+        <artifactId>freemarker</artifactId>
+        <version>2.3.30</version>
+      </dependency>
+      <dependency>
+        <groupId>com.itextpdf.tool</groupId>
+        <artifactId>xmlworker</artifactId>
+        <version>5.4.1</version>
+      </dependency>
+      <dependency>
+        <groupId>com.itextpdf</groupId>
+        <artifactId>itext-asian</artifactId>
+        <version>5.2.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.xhtmlrenderer</groupId>
+        <artifactId>flying-saucer-pdf-itext5</artifactId>
+        <version>9.1.18</version>
       </dependency>
   
       <dependency>
@@ -142,6 +178,26 @@
           </exclusion>
         </exclusions>
       </dependency>
+      
+      <!--jwt-->
+      <dependency>
+        <groupId>com.auth0</groupId>
+        <artifactId>java-jwt</artifactId>
+        <version>3.4.0</version>
+      </dependency>
+  
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt</artifactId>
+        <version>0.9.1</version>
+      </dependency>
+  
+      <!-- fastjson依赖 -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.2.75</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   
@@ -161,4 +217,5 @@
       </plugins>
     </pluginManagement>
   </build>
+  
 </project>

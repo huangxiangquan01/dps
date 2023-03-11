@@ -23,7 +23,7 @@ public class DateUtil {
     public static final long MS_OF_ONE_DAY = 86400000;
 
     public static String format(Date date, String pattern) {
-        return new SimpleDateFormat(pattern, Locale.SIMPLIFIED_CHINESE).format(date);
+        return new SimpleDateFormat(pattern).format(date);
     }
 
     public static Date parse(String dateStr, String pattern) throws ParseException {

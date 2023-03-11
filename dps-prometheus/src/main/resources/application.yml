@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+# 配置 SpringBoot Admin 服务端的地址
+spring:
+  application:
+    admin: prometheus
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8090
+        username: admin
+        password: 123456
+
+# Actuator的基本配置
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'

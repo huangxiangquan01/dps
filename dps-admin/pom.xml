@@ -38,5 +38,29 @@
       <artifactId>jolokia-core</artifactId>
     </dependency>
     
+    <dependency>
+      <groupId>cn.xqhuang.dps</groupId>
+      <artifactId>dps-common</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+  
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+  
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.4</version>
+    </dependency>
+  
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <version>3.0.1</version>
+    </dependency>
+
   </dependencies>
 </project>

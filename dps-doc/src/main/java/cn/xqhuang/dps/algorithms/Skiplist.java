@@ -4,6 +4,16 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Skiplist {
+    class Node {
+        int val;
+        Node[] forward;
+
+        public Node(int val, int maxLevel) {
+            this.val = val;
+            this.forward = new Node[maxLevel];
+        }
+    }
+
     static final int MAX_LEVEL = 32;
     static final double P_FACTOR = 0.25;
     private Node head;
@@ -30,6 +40,14 @@ public class Skiplist {
             return true;
         } 
         return false;
+    }
+
+    public static void main(String[] args) {
+        Skiplist skiplist = new Skiplist();
+
+        skiplist.add(1);
+
+        skiplist.add(2);
     }
 
     public void add(int num) {
@@ -91,16 +109,6 @@ public class Skiplist {
         return lv;
     }
 
-
-    class Node {
-        int val;
-        Node[] forward;
-
-        public Node(int val, int maxLevel) {
-            this.val = val;
-            this.forward = new Node[maxLevel];
-        }
-    }
 }
 
 

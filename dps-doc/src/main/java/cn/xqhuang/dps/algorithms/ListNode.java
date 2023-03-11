@@ -2,6 +2,7 @@ package cn.xqhuang.dps.algorithms;
 
 public class ListNode {
     int val;
+    ListNode pre;
     ListNode next;
 
     ListNode() {

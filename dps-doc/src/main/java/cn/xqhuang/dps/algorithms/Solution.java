@@ -1,55 +1,61 @@
 package cn.xqhuang.dps.algorithms;
 
 
-import org.omg.PortableInterceptor.INACTIVE;
-import org.w3c.dom.Node;
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Solution {
 
-    public static void main(String[] args) {
-        System.out.println(threeSum(new int[]{-2, -1,0,1,2,-1,-4}));
+    public static void main(String[] args) throws IOException {
+        // System.out.println(balancedString("WWEQERQWQWWRWWERQWEQ"));
+        /*try (Scanner scanner = new Scanner(System.in)) {
+            String v1 = scanner.nextLine();
+            String v2 = scanner.nextLine();
+            String res = solution(v1, v2);
+            System.out.println(res);
+        }*/
+        // BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // String str = br.readLine();
+
+        // System.out.println(mergeSimilarItems(new int[]{7,4,8,9,7,7,5}));
     }
-    public static List<List<Integer>> threeSum(int[] nums) {
-        int n = nums.length;
-        Arrays.sort(nums);
-        List<List<Integer>> ans = new ArrayList<List<Integer>>();
-        // 枚举 a
-        for (int first = 0; first < n; ++first) {
-            // 需要和上一次枚举的数不相同
-            if (first > 0 && nums[first] == nums[first - 1]) {
-                continue;
-            }
-            // c 对应的指针初始指向数组的最右端
-            int third = n - 1;
-            int target = -nums[first];
-            // 枚举 b
-            for (int second = first + 1; second < n; ++second) {
-                // 需要和上一次枚举的数不相同
-                if (second > first + 1 && nums[second] == nums[second - 1]) {
-                    continue;
-                }
-                // 需要保证 b 的指针在 c 的指针的左侧
-                while (second < third && nums[second] + nums[third] > target) {
-                    --third;
-                }
-                // 如果指针重合，随着 b 后续的增加
-                // 就不会有满足 a+b+c=0 并且 b<c 的 c 了，可以退出循环
-                if (second == third) {
-                    break;
-                }
-                if (nums[second] + nums[third] == target) {
-                    List<Integer> list = new ArrayList<Integer>();
-                    list.add(nums[first]);
-                    list.add(nums[second]);
-                    list.add(nums[third]);
-                    ans.add(list);
-                }
+
+    public static List<List<Integer>> mergeSimilarItems(int[][] items1, int[][] items2) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < items2.length; i++) {
+            map.put(items2[i][0], items2[i][1]);
+        }
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < items1.length; i++) {
+            List<Integer>  temp = new ArrayList<>();
+            int value = items1[i][0];
+            int weight = items1[i][1];
+            temp.add(value);
+            temp.add(map.getOrDefault(value, 0) + weight);
+
+            map.remove(value);
+            res.add(temp);
+        }
+        if (map.size() > 0) {
+            for(Integer key : map.keySet()) {
+                List<Integer>  temp = new ArrayList<>();
+                temp.add(key);
+                temp.add(map.get(key));
+
+                res.add(temp);
             }
         }
-        return ans;
+
+        Collections.sort(res, new Comparator<List<Integer>>() {
+            @Override
+            public int compare(List<Integer> o1, List<Integer> o2) {
+                return o1.get(0) - o2.get(0);
+            }
+        });
+
+        return res;
     }
 }

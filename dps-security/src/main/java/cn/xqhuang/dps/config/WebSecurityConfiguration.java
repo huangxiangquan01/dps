@@ -61,9 +61,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(jwtAuthenticationProvider);
     }
 
-    @Value("${spring.security.auth.login-url:}")
-    private String loginUrl;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         List<String> permitAllEndpointList = getUnAuthUrls();
