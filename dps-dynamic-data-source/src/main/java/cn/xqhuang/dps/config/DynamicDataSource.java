@@ -1,32 +1,127 @@
 package cn.xqhuang.dps.config;
 
-import cn.xqhuang.dps.holder.DynamicDataSourceHolder;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
+import cn.xqhuang.dps.entity.DataSourceNode;
+import cn.xqhuang.dps.holder.DynamicDataSourceContextHolder;
+import cn.xqhuang.dps.holder.MultiConnectionContextHolder;
+import cn.xqhuang.dps.proxy.ConnectProxy;
+import cn.xqhuang.dps.service.DynamicDataSourceService;
+import com.alibaba.druid.util.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.datasource.AbstractDataSource;
+import org.springframework.jdbc.datasource.DataSourceUtils;
+import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * 动态数据源
- * 调用AddDefineDataSource组件的addDefineDynamicDataSource（）方法，获取原来targetdatasources的map，并将新的数据源信息添加到map中，并替换targetdatasources中的map
- * 切换数据源时可以使用@DataSource(value = "数据源名称")，或者DynamicDataSourceContextHolder.setContextKey("数据源名称")
- * @author zhangyu
- */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class DynamicDataSource extends AbstractRoutingDataSource {
+@Primary
+@Component
+public class DynamicDataSource extends AbstractDataSource implements CommandLineRunner {
 
-    //备份所有数据源信息，
-    private Map<Object, Object> defineTargetDataSources;
- 
-    /**
-     * 决定当前线程使用哪个数据源
-     */
+    private static final String DEFAULT_DB = "defaultDb";
+
+    @Autowired
+    private DataSource defaultDataSource;
+
+    @Autowired
+    private DynamicDataSourceService dynamicDataSourceService;
+
     @Override
-    protected Object determineCurrentLookupKey() {
-        return DynamicDataSourceHolder.getDynamicDataSourceKey();
+    public Connection getConnection() throws SQLException {
+        Connection connection = DataSourceUtils.getConnection(this.determineTargetDataSource());
+        return realGetConnection(connection);
+    }
+
+    /**
+     *  真正获取链接的方法
+     *  对获取数据库链接方法包装、保存到线程上下文
+     *  @return Connection
+     */
+    private Connection realGetConnection(Connection connection) throws SQLException {
+        connection.setCatalog(getCurrentDbName());
+        // 检查是否开启了跨库事务
+        boolean mutilTransactionStatus = MultiConnectionContextHolder.getMutilTransactionStatus();
+        if (mutilTransactionStatus) {
+            // 包装Connection对象，覆写commit方法，使mybatis自动提交失效
+            ConnectProxy connectProxy = new ConnectProxy(connection);
+            connectProxy.setAutoCommit(false);
+            // 保存获取到的数据库链接到当前线程上下文
+            MultiConnectionContextHolder.addConnection(connectProxy);
+            // 开启跨库事务、返回包装后的数据库链接
+            return connectProxy;
+        }
+        // 返回原生链接、不影响正常数据库自动操作提交
+        return connection;
+    }
+
+    @Override
+    public Connection getConnection(String username, String password) throws SQLException {
+        Connection connection = this.determineTargetDataSource().getConnection(username,password);
+        return realGetConnection(connection);
+    }
+
+    @Override
+    public <T> T unwrap(Class<T> iface) throws SQLException {
+        return iface.isInstance(this) ? (T) this : this.determineTargetDataSource().unwrap(iface);
+    }
+
+    @Override
+    public boolean isWrapperFor(Class<?> iface) throws SQLException {
+        return iface.isInstance(this) || this.determineTargetDataSource().isWrapperFor(iface);
+    }
+
+    protected DataSource determineTargetDataSource() {
+        DataSource dataSource = null;
+        ConcurrentHashMap<String, DataSource> resolvedDataSources = dynamicDataSourceService.getResolvedDataSources();
+        if (resolvedDataSources != null) {
+            String lookupKey = getDbServerByDbName();
+            if (!StringUtils.isEmpty(lookupKey)) {
+                dataSource = resolvedDataSources.get(lookupKey);
+            }
+        }
+        if (dataSource == null) {
+            dataSource = defaultDataSource;
+        }
+        return dataSource;
+    }
+
+    /**
+     * 通过dbName获取dbServer
+     *
+     * @return
+     */
+    protected String getDbServerByDbName() {
+        String dbName = getCurrentDbName();
+        return dynamicDataSourceService.getDbServerByDbName(dbName);
+    }
+
+    /**
+     * 查询当前线程上下文对应的库名
+     *
+     * @return
+     */
+    protected String getCurrentDbName() {
+        String dbName = DynamicDataSourceContextHolder.getDataSourceType();
+        if (StringUtils.isEmpty(dbName)) {
+            dbName = DEFAULT_DB;
+        }
+        return dbName;
+    }
+
+
+    @Override
+    public void run(String... args) throws Exception {
+
+        List<DataSourceNode> nodes = dynamicDataSourceService.getDbNodes();
+
+        nodes.forEach(node -> {
+            dynamicDataSourceService.createDataSource(node);
+        });
     }
 }
