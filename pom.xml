@@ -16,6 +16,7 @@
     <module>dps-doc</module>
     <module>dps-code-gen</module>
     <module>dps-common</module>
+    <module>dps-flowable</module>
     <module>dps-zookeeper</module>
     <module>dps-config-spring-boot-start</module>
     <module>dps-redis</module>
@@ -24,6 +25,7 @@
     <module>dps-dynamic-data-source</module>
     <module>dps-kafka</module>
     <module>dps-rabbit</module>
+    <module>dps-excel</module>
     <module>dps-rocket</module>
     <module>dps-dubbo</module>
     <module>dps-prometheus</module>
