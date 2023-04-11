@@ -1,8 +1,13 @@
 package cn.xqhuang.dps.entity;
 
 
-import java.util.Date;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
 public class Authors {
 
     private Integer id;
@@ -12,10 +17,6 @@ public class Authors {
     private String lastName;
 
     private String email;
-
-    private Date birthdate;
-
-    private Date added;
 
     public Integer getId() {
         return id;
@@ -49,24 +50,4 @@ public class Authors {
         this.email = email == null ? null : email.trim();
     }
 
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
-
-    public Date getAdded() {
-        return added;
-    }
-
-    public void setAdded(Date added) {
-        this.added = added;
-    }
-
-    @Override
-    public String toString() {
-        return this.id + "," + this.firstName + "," + this.lastName + "," + this.email + "," + this.birthdate + "," + this.added;
-    }
 }

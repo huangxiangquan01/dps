@@ -1,5 +1,8 @@
 package cn.xqhuang.dps.utils;
 
+import cn.xqhuang.dps.dynamic.VoteTitleHandler;
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.excel.write.metadata.style.WriteCellStyle;
 import com.alibaba.excel.write.metadata.style.WriteFont;
 import com.alibaba.excel.write.style.HorizontalCellStyleStrategy;
@@ -7,12 +10,32 @@ import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+
 /**
  * @author huangxq
  * @description: TODO
  * @date 2023/3/2010:44
  */
 public class EasyExcelUtils {
+
+    public static void exportVoteExcel(String fileName, String sheetName, Class clazz,
+                                       List dataList, String title, String describe, Date voteDate, String filepath) {
+        try {
+            File result = File.createTempFile(fileName, ".xlsx", new File(filepath));
+            EasyExcel.write(result)
+                    .head(clazz)
+                    .excelType(ExcelTypeEnum.XLSX)
+                    .registerWriteHandler(new VoteTitleHandler(title, describe, voteDate))
+                    .sheet(sheetName)
+                    .doWrite(dataList);
+        } catch (IOException e) {
+
+        }
+    }
 
     public static HorizontalCellStyleStrategy getStyleStrategy(){
         // 头的策略
