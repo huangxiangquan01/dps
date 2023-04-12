@@ -4,9 +4,9 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://testUser:123456@127.0.0.1:27017/test
+      # uri:
       # host: 127.0.0.1
       # port: 27017
-      # username: testUser
-      # password: 123456
-      # database: test
+      # username:
+      # password:
+      # database:
