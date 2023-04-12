@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-cn.xqhuang.dps.config.SecurityAutoConfiguration
