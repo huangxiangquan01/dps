@@ -4,7 +4,7 @@ local luasql = require "luasql.mysql"
 local env= luasql.mysql()
 print(env)
 --连接数据库
-local conn=env:connect("bbsgo_db","root","Hxq@123456_","124.221.90.139", 3306)
+local conn=env:connect("bbsgo_db","root","Hxq@123456_","127.0.0.1", 3306)
 print(conn)
 --设置数据库的编码格式
 conn:execute"SET NAMES UTF-8"

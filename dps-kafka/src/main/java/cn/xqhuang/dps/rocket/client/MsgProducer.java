@@ -10,7 +10,7 @@ public class MsgProducer {
 
     public static void main(String[] args) throws Exception {
         Properties props = new Properties();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "124.221.90.139:9092");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
          /*
          发出消息持久化机制参数
         （1）acks=0： 表示producer不需要等待任何broker确认收到消息的回复，就可以继续发送下一条消息。性能最高，但是最容易丢消息。

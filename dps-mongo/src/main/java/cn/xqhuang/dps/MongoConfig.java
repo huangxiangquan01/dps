@@ -10,7 +10,7 @@ public class MongoConfig {
 
     // @Bean
     public MongoClient mongoClient() {
-        return new MongoClient("mongodb://124.221.90.139:27017");
+        return new MongoClient("mongodb://127.0.0.1:27017");
     }
 
     // @Bean

@@ -16,7 +16,7 @@ public class MsgConsumer {
 
     public static void main(String[] args) {
         Properties props = new Properties();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "124.221.90.139:9092");
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
         // 消费分组名
         props.put(ConsumerConfig.GROUP_ID_CONFIG, CONSUMER_GROUP_NAME);
         // 是否自动提交offset，默认就是true

@@ -6,7 +6,7 @@ spring:
   application:
     name: oauth2-server
   datasource:
-    url: jdbc:mysql://124.221.90.139:3306/security_db?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/security_db?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=utf-8&useSSL=false
     username: root
     password: Hxq@123456_
     driver-class-name: com.mysql.cj.jdbc.Driver

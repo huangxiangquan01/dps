@@ -10,7 +10,7 @@ dubbo:
     name: ${spring.application.name}
 # Dubbo Registry
   registry:
-    address: zookeeper://124.221.90.139:2181
+    address: zookeeper://127.0.0.1:2181
 # Dubbo Protocol
   #dubbo.protocol.name=dubbo
   #dubbo.protocol.port=20880
