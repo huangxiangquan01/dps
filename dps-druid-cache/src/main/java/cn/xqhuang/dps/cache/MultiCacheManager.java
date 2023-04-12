@@ -27,12 +27,14 @@ public class MultiCacheManager extends AbstractCacheManager {
         // Set<String> remoteCacheNames = new HashSet<>(remoteCacheManager.getCacheNames());
         Collection<Cache> caches = new ArrayList<>();
         localCacheNames.forEach(name -> {
+            caches.add(new MultiCache(name, localCacheManger.getCache(name), remoteCacheManager.getCache(name)));
+
             /*if (remoteCacheNames.contains(name)) {
                 caches.add(new MultiCache(name, localCacheManger.getCache(name), remoteCacheManager.getCache(name)));
             } else {
                 caches.add(localCacheManger.getCache(name));
-            }*/
-            caches.add(new MultiCache(name, localCacheManger.getCache(name), remoteCacheManager.getCache(name)));
+            }
+            caches.add(new MultiCache(name, localCacheManger.getCache(name), remoteCacheManager.getCache(name)));*/
         });
 
         /*remoteCacheNames.forEach(name -> {

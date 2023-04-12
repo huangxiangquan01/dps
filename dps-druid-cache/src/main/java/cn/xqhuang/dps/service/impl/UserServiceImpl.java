@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
         userMapper.insert(user);
     }
 
-    @Cacheable(value = "user_cache", key = "#id", unless = "#result == null")
+    @Cacheable(value = "user_cache", unless = "#result == null")
     public User getUserById(Long id) {
         return userMapper.getUserById(id);
     }

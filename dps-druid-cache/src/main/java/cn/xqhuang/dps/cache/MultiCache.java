@@ -31,8 +31,10 @@ public class MultiCache implements Cache {
 
     @Override
     public ValueWrapper get(Object key) {
+        log.info("从一级缓存取 key ：" + key);
         ValueWrapper valueWrapper = localCache.get(key);
         if (valueWrapper == null) {
+            log.info("从二级缓存取 key ：" + key);
             valueWrapper = remoteCache.get(key);
             if (valueWrapper != null) {
                 localCache.put(key, valueWrapper.get());
@@ -46,7 +48,7 @@ public class MultiCache implements Cache {
         log.info("从一级缓存取 key ：" + key);
         T value = localCache.get(key, type);
         if (value == null) {
-            log.info("从一级缓存取 key ：" + key);
+            log.info("从二级缓存取 key ：" + key);
             value = remoteCache.get(key, type);
             if (value != null) {
                 localCache.put(key, value);

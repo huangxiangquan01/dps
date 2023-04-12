@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 @EnableCaching
 public class MyCacheConfig {
 
-    @Bean
+    // @Bean
     public Caffeine caffeineConfig() {
         return
                 Caffeine.newBuilder()
@@ -59,7 +59,12 @@ public class MyCacheConfig {
         Set<String> cacheNames = new HashSet<>();
         cacheNames.add("user_cache");
         CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
-        caffeineCacheManager.setCaffeine(caffeineConfig());
+        caffeineCacheManager.setCaffeine(Caffeine.newBuilder()
+                .initialCapacity(100)
+                .maximumSize(500)
+                .expireAfterWrite(30, TimeUnit.MINUTES)
+                .weakKeys()
+                .recordStats());
         caffeineCacheManager.setCacheNames(cacheNames);
 
         RedisCacheConfiguration cacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
