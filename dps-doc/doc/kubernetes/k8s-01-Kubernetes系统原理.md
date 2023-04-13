@@ -3,7 +3,7 @@
 
 #### **1.Kubernetes 是什么？**
 
-![](./image/1-1.png)
+![](https://kubenertes.oss-cn-nanjing.aliyuncs.com/Image/1-1.png)
 
 - **传统部署时代**
 
@@ -80,7 +80,7 @@
 
 #### **3.K8s 容器生态系统及容器编排技术对比**
 
-<img src="./image/1-3.png" style="zoom:80%;" />
+<img src="https://kubenertes.oss-cn-nanjing.aliyuncs.com/Image/1-3.png" style="zoom:80%;" />
 
 #### **4.Kubernets 资源**
 
@@ -113,9 +113,9 @@
 
 #### **6.Kubernetes 概念** 
 
-   ![](./image/1-6-1.png)
+![](https://kubenertes.oss-cn-nanjing.aliyuncs.com/Image/1-6-1.png)
 
-![](./image/1-6-2.png)
+![](https://kubenertes.oss-cn-nanjing.aliyuncs.com/Image/1-6-2.png)
 
 - **控制平面组件（Control Plane Components）** 
   - **apiserver：**作为kubernetes系统的入口，封装了核心对象的增删改查操作，以RESTFul接口方式提供给外部客户和内部组件调用。它维护的 REST 对象将持久化到 etcd（一个分布式强一致性的 key/value 存储）。
@@ -136,11 +136,11 @@
 - **容器资源监控：** **Heapster, Metrics-server**
 ####  **7.Kubernetes HA 集群**
 
-![](./image/1-7.png)
+![](https://kubenertes.oss-cn-nanjing.aliyuncs.com/Image/1-7.png)
 
 #### **8.k8s 中 3 个重要概念** 
 
-- **Pod：**是 Kubernetes 最基本的部署调度单元，可以包含 Container，逻辑上表示某种应用的一个实例。比如一个 web 站点应用由前端、后端及数据库构建而成，这三个组件将运行在各自的容器中，那么我们可以创建包含三个 Container 的 Pod。 
+- **Pod**:是 Kubernetes 最基本的部署调度单元，可以包含 Container，逻辑上表示某种应用的一个实例。比如一个 web 站点应用由前端、后端及数据库构建而成，这三个组件将运行在各自的容器中，那么我们可以创建包含三个 Container 的 Pod。 
 
 - **Service：** 也是 Kubernetes 的基本操作单元，是真实应用服务的抽象，每一个服务后面都有很多对应的容器来支持，通过 Proxy 的 port 和服务 selector 决定服务请求传递给后端提供服务的容器，对外表现为一个单一访问接口，外部不需要了解后端如何运行，这给扩展或维护后端带来很大的好处。
 
@@ -150,4 +150,4 @@
 
 #### **9.Kubernetes (k8s)编排调度框架**
 
-![](./image/1-9.png)
+![](https://kubenertes.oss-cn-nanjing.aliyuncs.com/Image/1-9.png)
