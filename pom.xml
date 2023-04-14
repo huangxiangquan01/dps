@@ -18,6 +18,7 @@
     <module>dps-common</module>
     <module>dps-flowable</module>
     <module>dps-zookeeper</module>
+    <module>dps-xxl-executor</module>
     <module>dps-config-spring-boot-start</module>
     <module>dps-redis</module>
     <module>dps-security-oauth2</module>
@@ -29,7 +30,6 @@
     <module>dps-dubbo</module>
     <module>dps-gateway</module>
     <module>dps-servlet</module>
-    <module>dps-selenium</module>
     <module>dps-mongo</module>
     <module>dps-shardingsphere</module>
     <module>dps-netty</module>
