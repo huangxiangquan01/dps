@@ -1,13 +1,13 @@
-server:
-  port: 7081
-
 spring:
+  profiles:
+    active: test
+
   datasource:
     ########## JDBC 基本配置 ##########
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver   # mysql8 的连接驱动
-    url: jdbc:mysql://localhost:3306/db2
+    url: jdbc:mysql://localhost:3306/ry_db
     platform: mysql                               # 数据库类型
     type: com.alibaba.druid.pool.DruidDataSource  # 指定数据源类型
     ########## 连接池 配置 ##########
