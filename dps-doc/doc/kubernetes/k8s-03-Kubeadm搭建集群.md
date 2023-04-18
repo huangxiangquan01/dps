@@ -257,9 +257,9 @@ kubeadm join 192.168.200.132:6443 --token pahgrt.7gn13u88wz4f89an \
 ③ 在node节点上使用kubectl
 
 ```sh
-scp $HOME/.kube/config root@k8s-master:/etc/kubernetes/kubelet.conf
+scp root@k8s-master:/etc/kubernetes/admin.conf /etc/kubernetes/admin.conf
 
-echo "export KUBECONFIG=/etc/kubernetes/kubelet.conf" >> /etc/profile
+echo "export KUBECONFIG=/etc/kubernetes/admin.conf" >> /etc/profile
 # 生效
 source /etc/profile
 ```
