@@ -3,11 +3,14 @@ package cn.xqhuang.dps.config;
 import cn.xqhuang.dps.entity.DataSourceNode;
 import cn.xqhuang.dps.holder.DynamicDataSourceContextHolder;
 import cn.xqhuang.dps.holder.MultiConnectionContextHolder;
+import cn.xqhuang.dps.manager.DataSourceManager;
 import cn.xqhuang.dps.proxy.ConnectProxy;
 import cn.xqhuang.dps.service.DynamicDataSourceService;
 import com.alibaba.druid.util.StringUtils;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.AbstractDataSource;
 import org.springframework.jdbc.datasource.DataSourceUtils;
@@ -17,7 +20,6 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Primary
@@ -28,6 +30,9 @@ public class DynamicDataSource extends AbstractDataSource implements CommandLine
 
     @Autowired
     private DataSource defaultDataSource;
+
+    @Autowired
+    private DataSourceManager dataSourceManager;
 
     @Autowired
     private DynamicDataSourceService dynamicDataSourceService;
@@ -46,8 +51,8 @@ public class DynamicDataSource extends AbstractDataSource implements CommandLine
     private Connection realGetConnection(Connection connection) throws SQLException {
         connection.setCatalog(getCurrentDbName());
         // 检查是否开启了跨库事务
-        boolean mutilTransactionStatus = MultiConnectionContextHolder.getMutilTransactionStatus();
-        if (mutilTransactionStatus) {
+        boolean multiTransactionStatus = MultiConnectionContextHolder.getMultiTransactionStatus();
+        if (multiTransactionStatus) {
             // 包装Connection对象，覆写commit方法，使mybatis自动提交失效
             ConnectProxy connectProxy = new ConnectProxy(connection);
             connectProxy.setAutoCommit(false);
@@ -78,27 +83,17 @@ public class DynamicDataSource extends AbstractDataSource implements CommandLine
 
     protected DataSource determineTargetDataSource() {
         DataSource dataSource = null;
-        ConcurrentHashMap<String, DataSource> resolvedDataSources = dynamicDataSourceService.getResolvedDataSources();
+        ConcurrentHashMap<String, DataSource> resolvedDataSources = dataSourceManager.dataSourceConcurrentHashMap;
         if (resolvedDataSources != null) {
-            String lookupKey = getDbServerByDbName();
+            String lookupKey = getCurrentDbName();
             if (!StringUtils.isEmpty(lookupKey)) {
-                dataSource = resolvedDataSources.get(lookupKey);
+                dataSource = dataSourceManager.get(lookupKey);
             }
         }
         if (dataSource == null) {
             dataSource = defaultDataSource;
         }
         return dataSource;
-    }
-
-    /**
-     * 通过dbName获取dbServer
-     *
-     * @return
-     */
-    protected String getDbServerByDbName() {
-        String dbName = getCurrentDbName();
-        return dynamicDataSourceService.getDbServerByDbName(dbName);
     }
 
     /**
@@ -117,11 +112,16 @@ public class DynamicDataSource extends AbstractDataSource implements CommandLine
 
     @Override
     public void run(String... args) throws Exception {
+        QueryWrapper<DataSourceNode> wrapper = new QueryWrapper<>();
+        List<DataSourceNode> nodes = dynamicDataSourceService.list(wrapper);
 
-        List<DataSourceNode> nodes = dynamicDataSourceService.getDbNodes();
-
+        dataSourceManager.put(DEFAULT_DB, defaultDataSource);
         nodes.forEach(node -> {
-            dynamicDataSourceService.createDataSource(node);
+            dataSourceManager.put(node.getName(), DataSourceBuilder.create()
+                    .url(node.getUrl())
+                    .username(node.getUsername())
+                    .password(node.getPassword())
+                    .build());
         });
     }
 }

@@ -9,8 +9,8 @@ public class DataSourceHelper {
      */
     public static void changeToMy() {
         DynamicDataSourceContextHolder.clearDataSourceType();
-        // String dbName = Constants.ENTERPRISE_DATABASE_PREFIX + UserHolder.getUser().getEnterpriseId();
-        // DynamicDataSourceContextHolder.setDataSourceType(dbName);
+        String dbName = "db1";
+        DynamicDataSourceContextHolder.setDataSourceType(dbName);
     }
 
     /**

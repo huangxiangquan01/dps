@@ -1,15 +1,15 @@
 package cn.xqhuang.dps.mapper;
 
-import cn.xqhuang.dps.entity.DataSourceNode;
+import cn.xqhuang.dps.entity.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
 /**
  * @author huangxq
- * @description:
- * @date 2023/4/23 18:09 星期日
+ * @description: TODO
+ * @date 2023/3/716:37
  */
 @Repository
-public interface DataSourceNodeMapper extends BaseMapper<DataSourceNode> {
+public interface SysUserMapper extends BaseMapper<SysUser> {
 
 }

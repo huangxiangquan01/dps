@@ -2,18 +2,39 @@ package cn.xqhuang.dps.manager;
 
 import javax.sql.DataSource;
 import java.util.Collection;
+import java.util.concurrent.ConcurrentHashMap;
 
-public interface DataSourceManager {
+public class DataSourceManager {
 
-    void put(String var1, DataSource var2);
- 
-    DataSource get(String var1);
- 
-    Boolean hasDataSource(String var1);
- 
-    void remove(String var1);
- 
-    void closeDataSource(String var1);
- 
-    Collection<DataSource> all();
+    public static ConcurrentHashMap<String, DataSource> dataSourceConcurrentHashMap = new ConcurrentHashMap<>();
+
+    public void put(String name, DataSource dataSource) {
+        dataSourceConcurrentHashMap.put(name, dataSource);
+    }
+
+    public DataSource get(String name) {
+        return dataSourceConcurrentHashMap.get(name);
+    }
+
+    public Boolean hasDataSource(String name) {
+        return  dataSourceConcurrentHashMap.contains(name);
+    }
+
+    public void remove(String name) {
+        dataSourceConcurrentHashMap.remove(name);
+    }
+
+    public void closeDataSource(String name) {
+        if (hasDataSource(name)) {
+            try {
+                dataSourceConcurrentHashMap.get(name).getConnection().close();
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
+    public Collection<DataSource> all() {
+        return dataSourceConcurrentHashMap.values();
+    }
 }

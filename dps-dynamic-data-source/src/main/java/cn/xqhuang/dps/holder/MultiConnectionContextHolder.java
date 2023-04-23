@@ -23,7 +23,7 @@ public class MultiConnectionContextHolder {
     /**
      * 是否开启跨库事务 状态标记
      */
-    private static final InheritableThreadLocal<Boolean> mutilTransactionStatus = new InheritableThreadLocal<>();
+    private static final InheritableThreadLocal<Boolean> multiTransactionStatus = new InheritableThreadLocal<>();
 
     /**
      * 清除当前线程持有链接
@@ -35,7 +35,7 @@ public class MultiConnectionContextHolder {
     /**
      * 获取当前线程持有链接
      */
-    public static Set<ConnectProxy> getCurrentConections() {
+    public static Set<ConnectProxy> getCurrentConnections() {
         if (CollectionUtils.isEmpty(connectionThreadLocal.get())) {
             return Collections.EMPTY_SET;
         }
@@ -58,19 +58,19 @@ public class MultiConnectionContextHolder {
      * @Description 查询当前线程是否开启了跨库事务
      * @return boolean
      */
-     public static boolean getMutilTransactionStatus() {
-         if (Objects.isNull(mutilTransactionStatus.get())) {
+     public static boolean getMultiTransactionStatus() {
+         if (Objects.isNull(multiTransactionStatus.get())) {
              return false;
          }
-         return mutilTransactionStatus.get();
+         return multiTransactionStatus.get();
      }
 
     /**
      * @Description 设置当前线程跨库事务状态
      * @return boolean
      */
-    public static void setMutilTransactionStatus(boolean status) {
-        mutilTransactionStatus.set(status);
+    public static void setMultiTransactionStatus(boolean status) {
+        multiTransactionStatus.set(status);
     }
 
 
@@ -78,7 +78,7 @@ public class MultiConnectionContextHolder {
      * 清除当前线程跨库事务状态
      */
     public static void clearMultiTransactionStatus() {
-        mutilTransactionStatus.remove();
+        multiTransactionStatus.remove();
     }
 
 }

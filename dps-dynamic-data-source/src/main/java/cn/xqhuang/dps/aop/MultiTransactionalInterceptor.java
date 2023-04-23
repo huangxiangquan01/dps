@@ -1,4 +1,4 @@
-package cn.xqhuang.dps.interceptor;
+package cn.xqhuang.dps.aop;
 
 import cn.xqhuang.dps.holder.MultiConnectionContextHolder;
 import cn.xqhuang.dps.proxy.ConnectProxy;
@@ -22,7 +22,7 @@ public class MultiTransactionalInterceptor {
      */
     @Before(value = "@annotation(cn.xqhuang.dps.annotation.MultiTransactional)")
     public void before() {
-        MultiConnectionContextHolder.setMutilTransactionStatus(true);
+        MultiConnectionContextHolder.setMultiTransactionStatus(true);
     }
 
     /**
@@ -32,7 +32,7 @@ public class MultiTransactionalInterceptor {
     @AfterThrowing(value = "@annotation(cn.xqhuang.dps.annotation.MultiTransactional)")
     public void afterThrowing() {
         // 从当前线程持有的链接、回退事务
-        Set<ConnectProxy> currentConnections = MultiConnectionContextHolder.getCurrentConections();
+        Set<ConnectProxy> currentConnections = MultiConnectionContextHolder.getCurrentConnections();
         try {
             for (ConnectProxy connection : currentConnections) {
                 connection.rollback();
@@ -54,7 +54,7 @@ public class MultiTransactionalInterceptor {
     @AfterReturning(value = "@annotation(cn.xqhuang.dps.annotation.MultiTransactional)")
     public void after() {
         // 跨库事务方法成功执行、提交事务
-        Set<ConnectProxy> currentConnections = MultiConnectionContextHolder.getCurrentConections();
+        Set<ConnectProxy> currentConnections = MultiConnectionContextHolder.getCurrentConnections();
         try {
             for (ConnectProxy connection : currentConnections) {
                 connection.realCommit();
