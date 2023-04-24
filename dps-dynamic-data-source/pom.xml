@@ -12,22 +12,40 @@
   <artifactId>dps-dynamic-data-source</artifactId>
 
   <dependencies>
-    <!--web模块依赖-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     
-    <!--spring核心aop模块依赖-->
+    <!-- 实现对数据库连接池的自动化配置 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-aop</artifactId>
+      <artifactId>spring-boot-starter-jdbc</artifactId>
     </dependency>
     
-    <!--德鲁伊数据源连接池依赖-->
+    <dependency> <!-- 本示例，我们使用 MySQL -->
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    
+    <!-- 实现对 MyBatis 的自动化配置 -->
     <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>druid-spring-boot-starter</artifactId>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <artifactId>mybatis-spring-boot-starter</artifactId>
+      <version>2.1.1</version>
+    </dependency>
+    
+    <!-- 实现对 dynamic-datasource 的自动化配置 -->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+      <version>2.5.7</version>
+    </dependency>
+    
+    <!-- 不造为啥 dynamic-datasource-spring-boot-starter 会依赖这个 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-actuator</artifactId>
     </dependency>
     
     <!--mysql驱动-->
@@ -49,10 +67,5 @@
       <scope>test</scope>
     </dependency>
     
-    <!--mybatis-plus依赖-->
-    <dependency>
-      <groupId>com.baomidou</groupId>
-      <artifactId>mybatis-plus-boot-starter</artifactId>
-    </dependency>
   </dependencies>
 </project>

@@ -1,9 +1,13 @@
 package cn.xqhuang.dps.manager;
 
+import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
+import org.springframework.stereotype.Component;
+
 import javax.sql.DataSource;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Component
 public class DataSourceManager {
 
     public static ConcurrentHashMap<String, DataSource> dataSourceConcurrentHashMap = new ConcurrentHashMap<>();

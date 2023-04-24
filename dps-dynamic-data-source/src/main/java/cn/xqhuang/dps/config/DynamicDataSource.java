@@ -1,30 +1,28 @@
 package cn.xqhuang.dps.config;
 
-import cn.xqhuang.dps.entity.DataSourceNode;
 import cn.xqhuang.dps.holder.DynamicDataSourceContextHolder;
 import cn.xqhuang.dps.holder.MultiConnectionContextHolder;
 import cn.xqhuang.dps.manager.DataSourceManager;
 import cn.xqhuang.dps.proxy.ConnectProxy;
 import cn.xqhuang.dps.service.DynamicDataSourceService;
-import com.alibaba.druid.util.StringUtils;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Primary;
-import org.springframework.jdbc.datasource.AbstractDataSource;
 import org.springframework.jdbc.datasource.DataSourceUtils;
+import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Primary
 @Component
-public class DynamicDataSource extends AbstractDataSource implements CommandLineRunner {
+public class DynamicDataSource extends AbstractRoutingDataSource implements CommandLineRunner {
 
     private static final String DEFAULT_DB = "defaultDb";
 
@@ -34,7 +32,7 @@ public class DynamicDataSource extends AbstractDataSource implements CommandLine
     @Autowired
     private DataSourceManager dataSourceManager;
 
-    @Autowired
+    // @Autowired
     private DynamicDataSourceService dynamicDataSourceService;
 
     @Override
@@ -96,6 +94,11 @@ public class DynamicDataSource extends AbstractDataSource implements CommandLine
         return dataSource;
     }
 
+    @Override
+    protected Object determineCurrentLookupKey() {
+        return getCurrentDbName();
+    }
+
     /**
      * 查询当前线程上下文对应的库名
      *
@@ -109,19 +112,23 @@ public class DynamicDataSource extends AbstractDataSource implements CommandLine
         return dbName;
     }
 
+    @Resource
+    @Qualifier("db2")
+    private DataSource db2;
 
     @Override
     public void run(String... args) throws Exception {
-        QueryWrapper<DataSourceNode> wrapper = new QueryWrapper<>();
-        List<DataSourceNode> nodes = dynamicDataSourceService.list(wrapper);
+        // QueryWrapper<DataSourceNode> wrapper = new QueryWrapper<>();
+        // List<DataSourceNode> nodes = dynamicDataSourceService.list(wrapper);
 
         dataSourceManager.put(DEFAULT_DB, defaultDataSource);
-        nodes.forEach(node -> {
+        dataSourceManager.put("db2", db2);
+        /*nodes.forEach(node -> {
             dataSourceManager.put(node.getName(), DataSourceBuilder.create()
                     .url(node.getUrl())
                     .username(node.getUsername())
                     .password(node.getPassword())
                     .build());
-        });
+        });*/
     }
 }

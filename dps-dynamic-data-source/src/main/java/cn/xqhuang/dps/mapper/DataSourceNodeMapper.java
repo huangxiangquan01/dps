@@ -1,7 +1,5 @@
 package cn.xqhuang.dps.mapper;
 
-import cn.xqhuang.dps.entity.DataSourceNode;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,6 +8,6 @@ import org.springframework.stereotype.Repository;
  * @date 2023/4/23 18:09 星期日
  */
 @Repository
-public interface DataSourceNodeMapper extends BaseMapper<DataSourceNode> {
+public interface DataSourceNodeMapper {
 
 }

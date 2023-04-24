@@ -3,18 +3,23 @@ server:
 
 spring:
   datasource:
-    druid:
-      type: com.alibaba.druid.pool.DruidDataSource
-      master:
-        url: jdbc:mysql://localhost:3306/db1?useUnicode=true&characterEncoding=utf-8&useSSL=false
-        username: root
-        password: 123456
-        driver-class-name: com.mysql.cj.jdbc.Driver
-      slave:
-        url: jdbc:mysql://localhost:3306/db2?useUnicode=true&characterEncoding=utf-8&useSSL=false
-        username: root
-        password: 123456
-        driver-class-name: com.mysql.cj.jdbc.Driver
+    name: defaultDb
+    url: jdbc:mysql://localhost:3306/db1?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # druid:
+      #  type: com.alibaba.druid.pool.DruidDataSource
+      #  master:
+      #    url: jdbc:mysql://localhost:3306/db1?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      #    username: root
+      #   password: 123456
+      #   driver-class-name: com.mysql.cj.jdbc.Driver
+      # slave:
+      #   url: jdbc:mysql://localhost:3306/db2?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      #   username: root
+      #   password: 123456
+    #   driver-class-name: com.mysql.cj.jdbc.Driver
 
 #mybatis配置
 mybatis:
