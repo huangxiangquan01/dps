@@ -20,5 +20,6 @@
     <module>dps-dynamic-data-source</module>
     <module>dps-excel</module>
     <module>dps-security-oauth2</module>
+    <module>dps-desensitize</module>
   </modules>
 </project>
