@@ -21,5 +21,6 @@
     <module>dps-excel</module>
     <module>dps-security-oauth2</module>
     <module>dps-desensitize</module>
+    <module>dps-jasypt</module>
   </modules>
 </project>

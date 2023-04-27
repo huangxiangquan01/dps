@@ -6,26 +6,20 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.2.5.RELEASE</version>
+    <version>2.3.12.RELEASE</version>
   </parent>
   
   <modules>
     <module>dps-admin</module>
     <module>dps-actuator</module>
-    <module>dps-druid-cache</module>
     <module>dps-doc</module>
-    <module>dps-code-gen</module>
     <module>dps-common</module>
     <module>dps-flowable</module>
     <module>dps-zookeeper</module>
     <module>dps-xxl-executor</module>
-    <module>dps-config-spring-boot-start</module>
     <module>dps-redis</module>
-    <module>dps-security-oauth2</module>
-    <module>dps-dynamic-data-source</module>
     <module>dps-kafka</module>
     <module>dps-rabbit</module>
-    <module>dps-excel</module>
     <module>dps-rocket</module>
     <module>dps-dubbo</module>
     <module>dps-gateway</module>
@@ -35,6 +29,9 @@
     <module>dps-netty</module>
     <module>dps-websocket</module>
     <module>dps-elasticsearch</module>
+    <module>dps-framework</module>
+    <module>dps-db-base</module>
+    <module>dps-skywalking</module>
   </modules>
   
   <groupId>cn.xqhuang.dps</groupId>
@@ -47,8 +44,8 @@
   
   <properties>
     <java.version>1.8</java.version>
-    <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-    <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+    <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+    <spring-cloud-alibaba.version>2.2.9.RELEASE</spring-cloud-alibaba.version>
     <dubbo.version>2.7.22</dubbo.version>
   </properties>
   
@@ -117,6 +114,14 @@
         <artifactId>mybatis-plus-boot-starter</artifactId>
         <version>3.0.5</version>
       </dependency>
+      
+      <!-- mybatisplus注解 -->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-annotation</artifactId>
+        <version>3.0.5</version>
+        <scope>compile</scope>
+      </dependency>
   
       <dependency>
         <groupId>de.codecentric</groupId>
@@ -148,16 +153,31 @@
         <artifactId>freemarker</artifactId>
         <version>2.3.30</version>
       </dependency>
+
       <dependency>
         <groupId>com.itextpdf.tool</groupId>
         <artifactId>xmlworker</artifactId>
-        <version>5.4.1</version>
+        <version>5.5.1</version>
+        <exclusions>
+          <exclusion>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
+
+      <dependency>
+        <groupId>com.itextpdf</groupId>
+        <artifactId>itextpdf</artifactId>
+        <version>5.5.13.3</version>
+      </dependency>
+
       <dependency>
         <groupId>com.itextpdf</groupId>
         <artifactId>itext-asian</artifactId>
         <version>5.2.0</version>
       </dependency>
+
       <dependency>
         <groupId>org.xhtmlrenderer</groupId>
         <artifactId>flying-saucer-pdf-itext5</artifactId>
@@ -203,8 +223,43 @@
         <artifactId>fastjson</artifactId>
         <version>1.2.83</version>
       </dependency>
+      
+      <dependency>
+        <groupId>cn.xqhuang.dps</groupId>
+        <artifactId>dps-common</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <scope>compile</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>cn.xqhuang.dps</groupId>
+        <artifactId>dps-db-base</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+      </dependency>
+      
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>5.8.15</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
+  
+  
+  <distributionManagement>
+    <repository>
+      <id>rdc-releases</id>
+      <name>rdc-releases</name>
+      <url>https://packages.aliyun.com/maven/repository/2368353-release-Dqqca6/</url>
+      <layout>default</layout>
+    </repository>
+    <snapshotRepository>
+      <id>rdc-snapshots</id>
+      <name>rdc-snapshots</name>
+      <url>https://packages.aliyun.com/maven/repository/2368353-snapshot-Nle3HG/</url>
+      <layout>legacy</layout>
+    </snapshotRepository>
+  </distributionManagement>
   
   <build>
     <pluginManagement>
