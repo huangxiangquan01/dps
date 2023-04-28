@@ -1,0 +1,39 @@
+# 无测试
+version: '3'
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    image: 'elasticsearch:7.6.2'
+    restart: always
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      - 'discovery.type=single-node'
+      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
+    cpu_count: 1
+
+  oap:
+    container_name: oap
+    image: 'apache/skywalking-oap-server:8.3.0-es7'
+    ports:
+      - '12800:12800'
+      - '11800:11800'
+    environment:
+      - TZ=Asia/Shanghai
+      - SW_STORAGE=elasticsearch7
+      - SW_STORAGE_ES_CLUSTER_NODES=elasticsearch:9200
+    links:
+      - elasticsearch:elasticsearch
+
+  skywalking-ui:
+    container_name: mysql
+    image: 'apache/skywalking-ui:8.3.0'
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - SW_OAP_ADDRESS=oap:12800
+    ports:
+      - '8088:8080'
+    links:
+      - oap=oap
