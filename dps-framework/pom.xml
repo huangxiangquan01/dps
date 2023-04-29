@@ -22,5 +22,6 @@
     <module>dps-security-oauth2</module>
     <module>dps-desensitize</module>
     <module>dps-jasypt</module>
+    <module>dps-quartz</module>
   </modules>
 </project>
