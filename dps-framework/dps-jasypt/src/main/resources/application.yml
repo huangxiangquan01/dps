@@ -6,18 +6,7 @@ spring:
     druid:
       url: jdbc:mysql://localhost:3306/ry_db?useUnicode=true&characterEncoding=utf-8&useSSL=false
       username: root
-      password: ENC@s1G1iJstKMOeitJKqOWqX+1F6XD9XgUiwiH8tgjH40W8rxD79W1uOgwPeNWB2nRD
+      password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
-jasypt:
-  encryptor:
-    # 加密算法
-    algorithm: PBEWITHHMACSHA512ANDAES_256
-    # 加密使用的盐
-    password: jaspyt_passwor
-    property:
-      # 修改默认的前缀和后缀，如果自定义属性探测器，那么此项配置不起作用
-      # prefix: ENC_(
-      # suffix: )
-      # 自定义的属性探测器，如果这个是自定义的，那么上述的前缀后缀不生效
-      # detector-bean: encryptablePropertyDetector
+
 

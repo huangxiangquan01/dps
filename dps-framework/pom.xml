@@ -23,5 +23,6 @@
     <module>dps-desensitize</module>
     <module>dps-jasypt</module>
     <module>dps-quartz</module>
+    <module>dps-email</module>
   </modules>
 </project>

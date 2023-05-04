@@ -1,6 +1,5 @@
 package client;
 
-import util.Generator;
 import util.PropLoader;
 import util.Revoker;
 
@@ -15,7 +14,7 @@ import java.io.IOException;
 public class DeleteTool {
 
 	public static void main(String[] args) {
-		Long startTime = System.currentTimeMillis();
+		long startTime = System.currentTimeMillis();
 		System.out.println("=========================================");
 		System.out.println("============ 正在删除计划相关代码  =======");
 		System.out.println("=========================================");

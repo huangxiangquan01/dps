@@ -1,0 +1,45 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cn.xqhuang.dps</groupId>
+    <artifactId>dps-framework</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>dps-email</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
+ <dependencies>
+   <dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-starter-web</artifactId>
+   </dependency>
+   
+   <dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-starter-test</artifactId>
+   </dependency>
+   
+   <dependency>
+     <groupId>cn.hutool</groupId>
+     <artifactId>hutool-all</artifactId>
+   </dependency>
+   
+   <dependency>
+     <groupId>org.projectlombok</groupId>
+     <artifactId>lombok</artifactId>
+   </dependency>
+
+   <dependency>
+     <groupId>cn.xqhuang.dps</groupId>
+     <artifactId>dps-common</artifactId>
+   </dependency>
+
+   <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
+   <dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-starter-mail</artifactId>
+   </dependency>
+ </dependencies>
+ 
+</project>
