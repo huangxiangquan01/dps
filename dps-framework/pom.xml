@@ -24,5 +24,7 @@
     <module>dps-jasypt</module>
     <module>dps-quartz</module>
     <module>dps-email</module>
+    <module>dps-oss</module>
+    <module>dps-multiple-data-source</module>
   </modules>
 </project>
