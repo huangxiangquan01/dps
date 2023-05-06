@@ -10,7 +10,6 @@ public class ObjectToMapUtils {
 	 *
 	 * @param obj 转换对象
 	 * @return map
-	 * @throws Exception
 	 */
 	public static Map<String, Object> objectToMap(Object obj) throws IllegalAccessException {
 		if (obj == null) {

@@ -9,8 +9,8 @@ public class IpLongUtils {
      */
     public static long ip2Long(String ipStr) {
         String[] ip = ipStr.split("\\.");
-        return (Long.valueOf(ip[0]) << 24) + (Long.valueOf(ip[1]) << 16)
-                + (Long.valueOf(ip[2]) << 8) + Long.valueOf(ip[3]);
+        return (Long.parseLong(ip[0]) << 24) + (Long.parseLong(ip[1]) << 16)
+                + (Long.parseLong(ip[2]) << 8) + Long.parseLong(ip[3]);
     }
 
     /**

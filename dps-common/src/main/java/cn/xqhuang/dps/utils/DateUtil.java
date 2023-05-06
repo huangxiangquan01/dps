@@ -1,13 +1,16 @@
 package cn.xqhuang.dps.utils;
 
 import com.google.common.collect.Lists;
-import org.springframework.util.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 public class DateUtil {
     public static final String DATE_PATTERN_YYYYMMDD = "yyyyMMdd";
@@ -17,9 +20,9 @@ public class DateUtil {
     public static final String DATE_PATTERN_YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
     public static final String DATE_PATTERN_HH_MM_SS = "HH:mm:ss";
     public static final String DATE_PATTERN_HH_MM = "HH:mm";
-    public static final String DATE_PATTERN_MM_DD = "MM月dd日";
-    public static final String DATE_PATTERN_SPECIAL_YYYY_MM_DD = "yyyy年MM月dd日";
-    public static final String DATE_PATTERN_MM_DD_HH_MM = "MM月dd日HH时mm分";
+    // public static final String DATE_PATTERN_MM_DD = "MM月dd日";
+    // public static final String DATE_PATTERN_SPECIAL_YYYY_MM_DD = "yyyy年MM月dd日";
+    // public static final String DATE_PATTERN_MM_DD_HH_MM = "MM月dd日HH时mm分";
     public static final long MS_OF_ONE_DAY = 86400000;
 
     public static String format(Date date, String pattern) {
@@ -356,7 +359,7 @@ public class DateUtil {
     /**
      * 获取time的周日的日期
      * @param date 传入当前日期
-     * @return
+     * @return data
      */
     public static Date getEndTimeOfWeek(Date date) {
         Calendar cal = Calendar.getInstance();
@@ -377,7 +380,7 @@ public class DateUtil {
     /**
      * 获取传入日期所在年的第一天
      * @param date
-     * @return
+     * @return date
      */
     public static Date getStartTimeOfYear(Date date) {
         final Calendar cal = Calendar.getInstance();
@@ -481,7 +484,7 @@ public class DateUtil {
      * @param endDate
      * @return
      */
-    public static List<Integer>   getBetweenMonth(String beginDate, String endDate)  {
+    public static List<Integer> getBetweenMonth(String beginDate, String endDate) {
         SimpleDateFormat date = new SimpleDateFormat(DateUtil.DATE_PATTERN_YYYY_MM_DD);
         Date d1 = null;
         try {
@@ -497,38 +500,42 @@ public class DateUtil {
         }
         Calendar c1 = Calendar.getInstance();
         Calendar c2 = Calendar.getInstance();
-        c1.setTime(d1);
-        c2.setTime(d2);
-        int a =(c2.get(Calendar.YEAR)-c1.get(Calendar.YEAR))*12+c2.get(Calendar.MONTH)-c1.get(Calendar.MONTH);
+        if (d1 != null) {
+            c1.setTime(d1);
+        }
+        if (d2 != null) {
+            c2.setTime(d2);
+        }
+        int a = (c2.get(Calendar.YEAR) - c1.get(Calendar.YEAR)) * 12 + c2.get(Calendar.MONTH) - c1.get(Calendar.MONTH);
         String[] str = beginDate.split("-");
         String month = str[1];
-        int monthnum = Integer.valueOf(month);
+        int monthNum = Integer.parseInt(month);
         List<Integer> lists = new ArrayList<Integer>();
-        lists.add(monthnum);
+        lists.add(monthNum);
         int t = 1;
-        for(int i=1;i <a;i++){
-            int num = monthnum + i;
-            if(num < 13){
+        for (int i = 1; i < a; i++) {
+            int num = monthNum + i;
+            if (num < 13) {
                 lists.add(num);
-            }else{
-                int mnum = num-12*t;
-                lists.add(mnum);
-                if(mnum == 12){
-                    t = t+1;
+            } else {
+                int mum = num - 12 * t;
+                lists.add(mum);
+                if (mum == 12) {
+                    t = t + 1;
                 }
             }
         }
         int start = getMonth(d1);
         int end = getMonth(d2);
-        List<Integer> indexs= Lists.newArrayList();
-        if (CollectionUtils.isEmpty(lists)){
-            indexs.add(start);
-            indexs.add(end);
-        }else {
-            lists.forEach(i-> indexs.add(i));
-            indexs.add(end);
+        List<Integer> indexes = Lists.newArrayList();
+        if (CollectionUtils.isEmpty(lists)) {
+            indexes.add(start);
+            indexes.add(end);
+        } else {
+            indexes.addAll(lists);
+            indexes.add(end);
         }
-        return indexs;
+        return indexes;
     }
 
 

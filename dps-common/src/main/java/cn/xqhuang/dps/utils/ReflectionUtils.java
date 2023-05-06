@@ -115,9 +115,7 @@ public abstract class ReflectionUtils {
         Class<?> searchType = clazz;
         while (Object.class != searchType && searchType != null) {
             Field[] fields = getDeclaredFields(searchType);
-            for (Field field : fields) {
-                fieldList.add(field);
-            }
+            fieldList.addAll(Arrays.asList(fields));
             searchType = searchType.getSuperclass();
             if (superclass != null && searchType == superclass) {
                 searchType = searchType.getSuperclass();

@@ -5,8 +5,8 @@ import cn.xqhuang.dps.excel.annotation.CellGroup;
 import cn.xqhuang.dps.excel.annotation.RowCell;
 import cn.xqhuang.dps.excel.annotation.Rows;
 import cn.xqhuang.dps.utils.ReflectionUtils;
-import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -56,7 +56,7 @@ public abstract class ExcelReportUtil {
         }
 
         final Map<String, Integer> curClazzFieldMap = fieldMap.get(clazz);
-        if (CollectionUtils.isEmpty(curClazzFieldMap)) {
+        if (curClazzFieldMap.isEmpty()) {
             return;
         }
 

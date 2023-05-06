@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class QueryParamBuilder {
-
     private static final String LESS_THEN_KEY_FORMAT = "%sLessThan";
     private static final String MORE_THEN_KEY_FORMAT = "%sMoreThan";
     private static final String SHOW_KEY_FORMAT = "%sShow";

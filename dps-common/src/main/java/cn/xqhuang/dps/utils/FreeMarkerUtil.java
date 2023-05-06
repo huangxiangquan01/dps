@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author huangxq
@@ -23,9 +24,9 @@ public class FreeMarkerUtil {
 
     private static final String UTF_8 = "UTF-8";
 
-    private static Map<String, FileTemplateLoader> fileTemplateLoaderCache = Maps.newConcurrentMap();
+    private final static Map<String, FileTemplateLoader> fileTemplateLoaderCache = Maps.newConcurrentMap();
 
-    private static Map<String, Configuration> configurationCache = Maps.newConcurrentMap();
+    private final static Map<String, Configuration> configurationCache = Maps.newConcurrentMap();
 
     /**
      * @description 获取模板
@@ -76,7 +77,7 @@ public class FreeMarkerUtil {
      * 获取模板路径
      *
      * @param templatePath 模板路径
-     * @return
+     * @return String
      */
     private static String getTemplatePath(String templatePath) {
         if (StringUtils.isEmpty(templatePath)) {
@@ -92,7 +93,7 @@ public class FreeMarkerUtil {
      * 获取模板文件名
      *
      * @param templatePath 模板路径
-     * @return
+     * @return String
      */
     private static String getTemplateName(String templatePath) {
         if (StringUtils.isEmpty(templatePath)) {
@@ -119,7 +120,7 @@ public class FreeMarkerUtil {
         String pdfFileName = fileName.substring(0, fileName.lastIndexOf("."));
         File defaultTemplate = null;
         File matchTemplate = null;
-        for (File f : file.listFiles()) {
+        for (File f : Objects.requireNonNull(file.listFiles())) {
             if (!f.isFile()) {
                 continue;
             }
@@ -130,11 +131,11 @@ public class FreeMarkerUtil {
             if (defaultTemplate == null) {
                 defaultTemplate = f;
             }
-            if (StringUtils.isEmpty(fileName) && defaultTemplate != null) {
+            if (StringUtils.isEmpty(fileName)) {
                 break;
             }
             templateName = templateName.substring(0, templateName.lastIndexOf("."));
-            if (templateName.toLowerCase().equals(pdfFileName.toLowerCase())) {
+            if (templateName.equalsIgnoreCase(pdfFileName)) {
                 matchTemplate = f;
                 break;
             }

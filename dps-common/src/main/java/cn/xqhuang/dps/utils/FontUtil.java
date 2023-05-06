@@ -1,7 +1,6 @@
 package cn.xqhuang.dps.utils;
 
 import com.google.common.collect.Maps;
-import lombok.extern.slf4j.Slf4j;
 
 import java.awt.*;
 import java.io.File;
@@ -33,11 +32,12 @@ public class FontUtil {
             }catch(Exception e){
                 return new Font("宋体", Font.PLAIN, 14);
             }finally{
-                fis.close();
+                if (fis != null) {
+                    fis.close();
+                }
             }
         }
-        Font dynamicFontPt = dynamicFont.deriveFont(fontSize);
 
-        return dynamicFontPt;
+        return dynamicFont.deriveFont(fontSize);
     }
 }

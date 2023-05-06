@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 public class XmlUtil {
 
-    public static XmlMapper xmlMapper;
+    public final static XmlMapper xmlMapper;
 
     static {
         xmlMapper = new XmlMapper();
@@ -32,14 +32,14 @@ public class XmlUtil {
         //XML标签名:使用骆驼命名的属性名，
         xmlMapper.setPropertyNamingStrategy(PropertyNamingStrategy.UPPER_CAMEL_CASE);
         //设置转换模式
-        xmlMapper.enable(MapperFeature.USE_STD_BEAN_NAMING);
+       // xmlMapper.enable(MapperFeature.USE_STD_BEAN_NAMING);
     }
 
     /**
-     * @param object
-     * @return
-     * @Description 将java对象转化为xml字符串
-     * @Title bean2Xml
+     * @param: object
+     * @return:
+     * @Description: 将java对象转化为xml字符串
+     * @Title: bean2Xml
      */
     public static String bean2Xml(Object object) {
         try {
@@ -51,11 +51,11 @@ public class XmlUtil {
     }
 
     /**
-     * @param xml
-     * @param clazz
-     * @return
-     * @Description 将xml字符串转化为java对象
-     * @Title xml2Bean
+     * @param: xml
+     * @param: clazz
+     * @return:
+     * @Description: 将xml字符串转化为java对象
+     * @Title: xml2Bean
      * */
     public static <T> T xml2Bean(String xml, Class<T> clazz) {
         try {

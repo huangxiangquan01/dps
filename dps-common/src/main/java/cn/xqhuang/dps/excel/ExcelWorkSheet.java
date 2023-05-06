@@ -3,8 +3,9 @@ package cn.xqhuang.dps.excel;
 import cn.xqhuang.dps.excel.annotation.CellGroup;
 import cn.xqhuang.dps.excel.annotation.RowCell;
 import cn.xqhuang.dps.excel.annotation.Rows;
-import cn.xqhuang.dps.excel.style.*;
 import cn.xqhuang.dps.excel.style.Font;
+import cn.xqhuang.dps.excel.style.*;
+import cn.xqhuang.dps.utils.DateUtil;
 import cn.xqhuang.dps.utils.JsonUtil;
 import cn.xqhuang.dps.utils.ReflectionUtils;
 import com.alibaba.fastjson.JSON;
@@ -12,17 +13,15 @@ import com.alibaba.fastjson.JSONObject;
 import com.aliyun.oss.ServiceException;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.DVConstraint;
 import org.apache.poi.hssf.usermodel.HSSFDataValidation;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
-import cn.xqhuang.dps.utils.DateUtil;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.CellRangeAddressList;
-import org.springframework.util.CollectionUtils;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -255,7 +254,7 @@ public class ExcelWorkSheet {
 
 
     public ExcelWorkSheet write(List<?> list, final String groupName) {
-        if (CollectionUtils.isEmpty(list)) {
+        if (list.isEmpty()) {
             return this;
         }
 
@@ -276,7 +275,7 @@ public class ExcelWorkSheet {
     }
 
     private ExcelWorkSheet createHeadCell(Row row, Class<?> clazz, Map<Class<?>, List<ReportModelPropertyDefinitionWrapper>> propertyDefinitionMap) {
-        if (CollectionUtils.isEmpty(propertyDefinitionMap)) {
+        if (propertyDefinitionMap.isEmpty()) {
             return this;
         }
 
@@ -304,7 +303,7 @@ public class ExcelWorkSheet {
 
 
     private ExcelWorkSheet createHeadCellWithCells(Row row, Class<?> clazz, final Map<String, ExcelCell> cells) {
-        if (CollectionUtils.isEmpty(cells)) {
+        if (cells.isEmpty()) {
             throw new ServiceException("cells is null");
         }
         List<ReportModelPropertyDefinition> properties = ExcelReportUtil.getModelDefinition(clazz);
@@ -357,7 +356,7 @@ public class ExcelWorkSheet {
 
     private ExcelWorkSheet writeContentWithCells(Row row, final Class<?> clazz, final Object data, final Map<String, ExcelCell> cells) {
 
-        if (CollectionUtils.isEmpty(cells)) {
+        if (cells.isEmpty()) {
             throw new ServiceException("cells is null");
         }
 

@@ -9,11 +9,13 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * protostuff 序列化工具类，基于protobuf封装
+ * @author huxngxiangquan
+ * @date
+ * @description  protostuff 序列化工具类，基于protobuf封装
  */
 public class ProtostuffUtil {
 
-    private static Map<Class<?>, Schema<?>> cachedSchema = new ConcurrentHashMap<>();
+    private final static Map<Class<?>, Schema<?>> cachedSchema = new ConcurrentHashMap<>();
 
     private static <T> Schema<T> getSchema(Class<T> clazz) {
         @SuppressWarnings("unchecked")
@@ -29,9 +31,8 @@ public class ProtostuffUtil {
 
     /**
      * 序列化
-     *
-     * @param obj
-     * @return
+     * @param: obj
+     * @return:
      */
     public static <T> byte[] serializer(T obj) {
         @SuppressWarnings("unchecked")
@@ -50,9 +51,9 @@ public class ProtostuffUtil {
     /**
      * 反序列化
      *
-     * @param data
-     * @param clazz
-     * @return
+     * @param: data
+     * @param: clazz
+     * @return:
      */
     public static <T> T deserializer(byte[] data, Class<T> clazz) {
         try {

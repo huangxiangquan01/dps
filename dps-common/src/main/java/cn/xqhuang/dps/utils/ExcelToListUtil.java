@@ -2,15 +2,14 @@ package cn.xqhuang.dps.utils;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.reflect.MethodUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.util.CollectionUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -158,7 +157,7 @@ public class ExcelToListUtil {
                     if (headCell == null)
                         continue;
                     Cell cell = dataRow.getCell(cellIndex);
-                    headCell.setCellType(Cell.CELL_TYPE_STRING);
+                    // headCell.setCellType(Cell.CELL_TYPE_STRING);
                     String headName = headCell.getStringCellValue().trim();
                     if (StringUtils.isEmpty(headName)) {
                         continue;
@@ -190,7 +189,7 @@ public class ExcelToListUtil {
                             } else {
                                 String value = null;
                                 if (cell != null) {
-                                    cell.setCellType(Cell.CELL_TYPE_STRING);
+                                    // cell.setCellType(Cell.CELL_TYPE_STRING);
                                     value = cell.getStringCellValue();
                                 }
                                 if (StringUtils.isEmpty(value)) {

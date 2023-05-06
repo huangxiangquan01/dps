@@ -4,6 +4,7 @@ import com.aliyun.oss.ServiceException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDate;
@@ -71,9 +72,9 @@ public class ParseTimeParam {
             queryParam.setQueryDate(arg);
         }
 
-        if (!org.springframework.util.CollectionUtils.isEmpty(queryParam.orderIds)) {
+        if (!CollectionUtils.isEmpty(queryParam.orderIds)) {
             queryParam.setQueryRangeStmt(StringUtils.join(queryParam.orderIds, ", "));
-        } else if (!org.springframework.util.CollectionUtils.isEmpty(queryParam.queryDateList)) {
+        } else if (!CollectionUtils.isEmpty(queryParam.queryDateList)) {
             final String transStartTimeStr = DateUtil.format(DateUtil.startTimeOfGivenDate(DateUtil.parseDate(queryParam.queryDateList.get(0), DateUtil.DATE_PATTERN_YYYY_MM_DD)), DateUtil.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS);
             final String transEndTimeStr = DateUtil.format(DateUtil.endTimeOfGivenDate(DateUtil.parseDate(queryParam.queryDateList.get(queryParam.queryDateList.size() - 1), DateUtil.DATE_PATTERN_YYYY_MM_DD)), DateUtil.DATE_PATTERN_YYYY_MM_DD_HH_MM_SS);
             queryParam.setQueryRangeStmt(String.format("%s ~ %s", transStartTimeStr, transEndTimeStr));

@@ -14,7 +14,6 @@ public class PasswordGeneratorUtil {
      *
      * @param passwordLength  密码的长度
      * @param minVariousType  密码包含字符的最少种类
-     * @return
      */
     public static String generateRandomPassword(Integer passwordLength, Integer minVariousType) {
         char[] password = new char[passwordLength];
@@ -67,8 +66,8 @@ public class PasswordGeneratorUtil {
         NUMBER("lowercase", "随机大写字母"),
         UPPERCASE("lowercase", "随机数字");
 
-        private String code;
-        private String name;
+        private final String code;
+        private final String name;
 
         CharacterType(String code, String name) {
             this.code = code;
