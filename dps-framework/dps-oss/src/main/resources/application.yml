@@ -5,5 +5,5 @@ spring:
   oss:
     endpoint: https://oss-cn-nanjing.aliyuncs.com
     region: oss-cn-nanjing
-    accessKey: 'LTAI5tMzaUm3RTnRZpRpTKeX'
-    secretKey: 'cixXPjVx1h1JXyOPVNazbxekTiuv9I'
+    accessKey:
+    secretKey:
