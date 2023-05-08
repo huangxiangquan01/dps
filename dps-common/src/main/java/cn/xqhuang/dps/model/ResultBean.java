@@ -7,9 +7,9 @@ public class ResultBean {
 
     @Getter
     public static class Success<T> {
-        private int status = 1;
-        private T content;
-        private String msg;
+        private final int status = 1;
+        private final T content;
+        private final String msg;
 
         private Success(T content, String msg) {
             this.content = content;

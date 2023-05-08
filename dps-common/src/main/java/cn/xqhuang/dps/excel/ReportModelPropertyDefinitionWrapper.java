@@ -9,9 +9,9 @@ import java.lang.reflect.Field;
 import java.util.Objects;
 
 public class ReportModelPropertyDefinitionWrapper {
-    private ReportModelPropertyDefinition targetPropertyDefinition;
-    private String targetGroupName;
-    private int targetIndex;
+    private final ReportModelPropertyDefinition targetPropertyDefinition;
+    private final String targetGroupName;
+    private final int targetIndex;
 
     public ReportModelPropertyDefinitionWrapper(final ReportModelPropertyDefinition targetPropertyDefinition,
                                                 final String targetGroupName,

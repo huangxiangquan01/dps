@@ -45,7 +45,7 @@ public class ReportModelPropertyDefinition {
             groups = rows.groups();
         }
 
-        if (Objects.isNull(groups) || groups.length <= 0) {
+        if (Objects.isNull(groups)) {
             return null;
         }
 
