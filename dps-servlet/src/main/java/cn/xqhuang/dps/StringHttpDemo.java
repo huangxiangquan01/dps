@@ -22,7 +22,7 @@ public class StringHttpDemo {
                 System.out.println(strText);
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 

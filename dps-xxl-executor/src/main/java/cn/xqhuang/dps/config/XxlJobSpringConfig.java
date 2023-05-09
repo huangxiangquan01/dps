@@ -1,6 +1,5 @@
 package cn.xqhuang.dps.config;
 
-import cn.xqhuang.dps.handle.DemoJobHandle;
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class XxlJobSpringConfig {
-    private static Logger logger = LoggerFactory.getLogger(XxlJobSpringConfig.class);
+    private final static Logger logger = LoggerFactory.getLogger(XxlJobSpringConfig.class);
 
     /**
      * ### 调度中心部署根地址 [选填]：如调度中心集群部署存在多个地址则用逗号分隔。执行器将会使用该地址进行"执行器心跳注册"和"任务结果回调"；为空则关闭自动注册；
@@ -29,7 +28,7 @@ public class XxlJobSpringConfig {
      * xxl.job.executor.logpath=/data/applogs/xxl-job/jobhandler
      * ### 执行器日志文件保存天数 [选填] ： 过期日志自动清理, 限制值大于等于3时生效; 否则, 如-1, 关闭自动清理功能；
      * xxl.job.executor.logretentiondays=30
-     * @return
+     * @return: XxlJobSpringExecutor
      */
     @Bean
     public XxlJobSpringExecutor xxlJobExecutor() {

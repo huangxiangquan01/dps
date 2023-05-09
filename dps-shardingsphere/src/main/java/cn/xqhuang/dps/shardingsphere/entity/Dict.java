@@ -1,12 +1,11 @@
 package cn.xqhuang.dps.shardingsphere.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
- * @author ：楼兰
+ * @author ：huangxq
  * @date ：Created in 2020/11/12
- * @description:
+ * @description
  **/
 @TableName("t_dict")
 public class Dict {

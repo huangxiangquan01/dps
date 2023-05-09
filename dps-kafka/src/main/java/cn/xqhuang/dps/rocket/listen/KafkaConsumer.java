@@ -15,7 +15,7 @@ public class KafkaConsumer {
      *                     partitionOffsets = @PartitionOffset(partition = "1", initialOffset = "100"))
      *     },concurrency = "6")
      *  //concurrency就是同组下的消费者个数，就是并发消费数，必须小于等于分区总数
-     * @param record
+     * @param: record
      */
     @KafkaListener(topics = "test",groupId = "testGroup")
     public void listenTestGroup(ConsumerRecord<String, String> record, Acknowledgment ack) {
@@ -26,7 +26,8 @@ public class KafkaConsumer {
         ack.acknowledge();
     }
 
-    /*//配置多个消费组
+    //配置多个消费组
+    /*
     @KafkaListener(topics = "test",groupId = "testOtherGroup")
     public void listenTestOtherGroup(ConsumerRecord<String, String> record, Acknowledgment ack) {
         String value = record.value();

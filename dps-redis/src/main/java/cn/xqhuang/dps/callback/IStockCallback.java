@@ -8,7 +8,7 @@ public interface IStockCallback {
  
     /**
      * 获取库存
-     * @return
+     * @return:
      */
     int getStock();
 }

@@ -1,0 +1,10 @@
+cn/xqhuang/dps/consumer/ClusterDubboConsumerDemoTest.class
+cn/xqhuang/dps/consumer/MockDubboConsumerDemoTest.class
+cn/xqhuang/dps/consumer/TimeoutDubboConsumerDemoTest.class
+cn/xqhuang/dps/consumer/GenericDubboConsumerDemoTest.class
+cn/xqhuang/dps/consumer/AsyncDubboConsumerTest.class
+cn/xqhuang/dps/consumer/base/DubboConsumerTest.class
+cn/xqhuang/dps/consumer/DefaultDubboConsumerDemoTest.class
+cn/xqhuang/dps/consumer/CallbackDubboConsumerDemoTest.class
+cn/xqhuang/dps/consumer/LoadBalanceDubboConsumerDemoTest.class
+cn/xqhuang/dps/consumer/StubDubboConsumerDemoTest.class

@@ -52,12 +52,6 @@
       <artifactId>spring-boot-actuator</artifactId>
     </dependency>
     
-    <!--mysql驱动-->
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-    </dependency>
-    
     <!--lombok模块依赖-->
     <dependency>
       <groupId>org.projectlombok</groupId>

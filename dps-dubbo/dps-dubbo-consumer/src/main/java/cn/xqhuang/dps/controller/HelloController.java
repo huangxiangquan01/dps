@@ -11,6 +11,6 @@ public class HelloController {
     @RequestMapping("/consumer/user/say")
     public String sayHello() {
         HelloService service = ProxyFactory.getProxy(HelloService.class);
-        return service.sayHello("xqhuang");
+        return service.sayHello("sam");
     }
 }

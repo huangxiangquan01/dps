@@ -108,13 +108,6 @@
         <version>1.2.14</version>
       </dependency>
   
-      <!-- mybatisplus依赖 -->
-      <dependency>
-        <groupId>com.baomidou</groupId>
-        <artifactId>mybatis-plus-boot-starter</artifactId>
-        <version>3.0.5</version>
-      </dependency>
-      
       <!-- mybatisplus注解 -->
       <dependency>
         <groupId>com.baomidou</groupId>
@@ -166,6 +159,7 @@
         </exclusions>
       </dependency>
 
+      <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
       <dependency>
         <groupId>com.itextpdf</groupId>
         <artifactId>itextpdf</artifactId>
@@ -242,23 +236,35 @@
         <artifactId>hutool-all</artifactId>
         <version>5.8.15</version>
       </dependency>
+
+      <dependency>
+        <groupId>com.github.cenbylin</groupId>
+        <artifactId>WxMessage-SDK</artifactId>
+        <version>0.1.1.RELEASE</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>3.0.5</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
-  
-  
-  <distributionManagement>
-    <repository>
-      <id>rdc-releases</id>
-      <name>rdc-releases</name>
-      <url>https://packages.aliyun.com/maven/repository/2368353-release-Dqqca6/</url>
-      <layout>default</layout>
-    </repository>
-    <snapshotRepository>
-      <id>rdc-snapshots</id>
-      <name>rdc-snapshots</name>
-      <url>https://packages.aliyun.com/maven/repository/2368353-snapshot-Nle3HG/</url>
-      <layout>legacy</layout>
-    </snapshotRepository>
+
+
+    <distributionManagement>
+      <repository>
+        <id>rdc-releases</id>
+        <name>rdc-releases</name>
+        <url>https://packages.aliyun.com/maven/repository/2368353-release-Dqqca6/</url>
+        <layout>default</layout>
+      </repository>
+      <snapshotRepository>
+        <id>rdc-snapshots</id>
+        <name>rdc-snapshots</name>
+        <url>https://packages.aliyun.com/maven/repository/2368353-snapshot-Nle3HG/</url>
+        <layout>default</layout>
+      </snapshotRepository>
   </distributionManagement>
   
   <build>

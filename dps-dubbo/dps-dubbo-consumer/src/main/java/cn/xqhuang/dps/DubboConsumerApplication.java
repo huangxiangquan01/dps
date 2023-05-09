@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author huangxq
- * @description: TODO
+ * @description TODO
  * @date 2022/5/914:26
  */
 @SpringBootApplication

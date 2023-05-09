@@ -3,7 +3,7 @@ package cn.xqhuang.dps.algorithms.sort;
 import java.util.Arrays;
 
 /**
- * @desc 快排   找基准
+ * @description  快排   找基准
  */
 public class QuickSort {
 

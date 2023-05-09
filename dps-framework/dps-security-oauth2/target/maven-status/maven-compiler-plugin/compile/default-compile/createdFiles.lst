@@ -1,0 +1,6 @@
+cn/xqhuang/dps/config/OAuth2SecurityConfig.class
+cn/xqhuang/dps/config/UserDetailsServiceImpl.class
+cn/xqhuang/dps/config/OAuth2AuthorizationServerConfig.class
+cn/xqhuang/dps/config/OAuth2ResourceServerConfig.class
+cn/xqhuang/dps/SecurityOauth2Application.class
+cn/xqhuang/dps/controller/ExampleController.class

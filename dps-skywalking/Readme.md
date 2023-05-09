@@ -2,6 +2,7 @@
 ### 下载镜像
 ```shell
 docker pull elasticsearch:7.6.2
+docker pull kibana:7.6.2
 docker pull apache/skywalking-oap-server:8.3.0-es7
 docker pull apache/skywalking-ui:8.3.0
 ```
@@ -9,7 +10,15 @@ docker pull apache/skywalking-ui:8.3.0
 ```shell
 docker run --restart=always -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" \
 -e ES_JAVA_OPTS="-Xms512m -Xmx512m" \
+-v /Users/huangxq/docker/es/logs:/usr/share/elasticsearch/logs \
+-v /Users/huangxq/docker/es/data:/usr/share/elasticsearch/data \
+-v /Users/huangxq/docker/es/plugins:/usr/share/elasticsearch/plugins \
 --name='elasticsearch' --cpuset-cpus="1" -m 2G -d elasticsearch:7.6.2
+```
+### 启动kibana
+```shell
+#运行kibana 注意IP一定不要写错
+docker run --name kibana -e ELASTICSEARCH_HOSTS=http://192.168.31.33:9200 -p 5601:5601 -d kibana:7.6.2
 ```
 
 ### 安装oap
@@ -19,7 +28,6 @@ docker run --name oap --restart always -d
 --restart=always -e TZ=Asia/Shanghai -p 12800:12800 
 -p 11800:11800 --link elasticsearch:elasticsearch -e SW_STORAGE=elasticsearch7 
 -e SW_STORAGE_ES_CLUSTER_NODES=elasticsearch:9200 apache/skywalking-oap-server:8.3.0-es7
-
 ```
 
 ### 安装ui

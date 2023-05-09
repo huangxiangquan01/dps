@@ -1,0 +1,6 @@
+cn/xqhuang/dps/rocket/KafkaApplication.class
+cn/xqhuang/dps/rocket/listen/KafkaConsumer.class
+cn/xqhuang/dps/rocket/controller/KafkaController.class
+cn/xqhuang/dps/rocket/client/MsgConsumer.class
+cn/xqhuang/dps/rocket/client/MsgProducer$1.class
+cn/xqhuang/dps/rocket/client/MsgProducer.class

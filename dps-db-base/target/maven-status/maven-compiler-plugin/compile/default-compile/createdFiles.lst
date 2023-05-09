@@ -1,0 +1,5 @@
+cn/xqhuang/dps/mapper/SystemUserMapper.class
+cn/xqhuang/dps/service/SystemUserService.class
+cn/xqhuang/dps/entity/SystemUsers$SystemUsersBuilder.class
+cn/xqhuang/dps/entity/SystemUsers.class
+cn/xqhuang/dps/service/impl/SystemUserServiceImpl.class

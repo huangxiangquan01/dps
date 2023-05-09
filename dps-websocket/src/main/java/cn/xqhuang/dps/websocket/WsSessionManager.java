@@ -8,20 +8,16 @@ package cn.xqhuang.dps.websocket;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketMessage;
-import org.springframework.web.socket.WebSocketSession;
 
 import javax.websocket.Session;
-import javax.websocket.server.PathParam;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author buhao
- * @version WsSessionManager.java, v 0.1 2019-10-22 10:24 buhao
+ * @author huangxiangquan
+ * @date
  */
 public class WsSessionManager {
 
@@ -29,17 +25,17 @@ public class WsSessionManager {
 
 
     //静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
-    private static AtomicInteger onlineCount = new AtomicInteger(0);
+    private final static AtomicInteger onlineCount = new AtomicInteger(0);
 
     /**
      * 保存连接 session 的地方
      */
-    private static ConcurrentHashMap<String, Session> SESSION_POOL = new ConcurrentHashMap<>();
+    private final static ConcurrentHashMap<String, Session> SESSION_POOL = new ConcurrentHashMap<>();
 
     /**
      * 添加 session
      *
-     * @param key
+     * @param: key
      */
     public static void add(String key, Session session) {
         // 添加 session
@@ -50,8 +46,8 @@ public class WsSessionManager {
     /**
      * 删除 session,会返回删除的 session
      *
-     * @param key
-     * @return
+     * @param: key
+     * @return:
      */
     public static Session remove(String key) {
         // 删除 session
@@ -65,7 +61,7 @@ public class WsSessionManager {
     /**
      * 删除并同步关闭连接
      *
-     * @param key
+     * @param: key
      */
     public static void removeAndClose(String key) {
         Session session = remove(key);
@@ -83,8 +79,8 @@ public class WsSessionManager {
     /**
      * 获得 session
      *
-     * @param key
-     * @return
+     * @param: key
+     * @return:
      */
     public static Session get(String key) {
         // 获得 session

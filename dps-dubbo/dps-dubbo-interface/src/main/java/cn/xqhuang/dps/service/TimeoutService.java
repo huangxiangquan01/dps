@@ -2,7 +2,7 @@ package cn.xqhuang.dps.service;
 
 /**
  * @author huangxq
- * @description: TODO
+ * @description TODO
  * @date 2022/5/1014:36
  */
 public interface TimeoutService {

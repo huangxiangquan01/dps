@@ -14,7 +14,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.io.Serializable;
 import java.util.Date;
 
-@Document(indexName = "student",type = "_doc",replicas = 0,shards = 3)
+@Document(indexName = "student", replicas = 0, shards = 3)
 @Data
 @Builder
 @AllArgsConstructor
@@ -27,7 +27,7 @@ public class Student implements Serializable {
     @Field(type = FieldType.Text,searchAnalyzer = "ik_smart",analyzer = "ik_max_word")
     private String name;
 
-    /*text类型开启统计的时候需要设置属性fielddata = true 正排索引*/
+    /*text类型开启统计的时候需要设置属性 fieldData = true 正排索引*/
     @Field(type = FieldType.Long)
     private Integer age;
 

@@ -1,31 +1,17 @@
 package util;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
+import freemarker.template.*;
 import org.apache.commons.lang3.StringUtils;
 
-import freemarker.template.Configuration;
-import freemarker.template.DefaultObjectWrapper;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
-import freemarker.template.Version;
+import java.io.*;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 /**
  * 代码生成工具
@@ -80,7 +66,9 @@ public class Generator {
 		Configuration conf = new Configuration(version);
 		conf.setDefaultEncoding("UTF-8");
 		conf.setObjectWrapper(new DefaultObjectWrapper(version));
-		conf.setDirectoryForTemplateLoading(new File(url.getFile()));
+		if (url != null) {
+			conf.setDirectoryForTemplateLoading(new File(url.getFile()));
+		}
 
 		String tableName = PropLoader.getPlanProp("db.tableName");
 		// freemarker测试
@@ -108,7 +96,7 @@ public class Generator {
 		// TODO Auto-generated method stub
 		Template template = conf.getTemplate("configjs.ftl");
 		Map<String, Object> paramMap = this.getCommonParam(tableName);
-		Writer writer = new OutputStreamWriter(System.out, "UTF-8");
+		Writer writer = new OutputStreamWriter(System.out, StandardCharsets.UTF_8);
 		template.process(paramMap, writer);
 		writer.flush();
 		//writer.close();
@@ -116,7 +104,7 @@ public class Generator {
 
 	private void generatePage(Configuration conf, String tableName) throws Exception {
 		//生成Html页面，html页面是变化最多的部分。目前的实现逻辑麻烦的就在查询条件那一部分， 初期的最初实现就把POJO中配置了TableColumn属性的列全部生成为文本类型的查询条件， 以后再优化。
-		System.out.println("==== 开始生成 " + tableName + " 对应的管理页面 ====");
+		// System.out.println("==== 开始生成 " + tableName + " 对应的管理页面 ====");
 		Template template = conf.getTemplate("Html.ftl");
 		// 拼凑参数
 		Map<String, Object> paramMap = this.getCommonParam(tableName);
@@ -251,15 +239,20 @@ public class Generator {
 		weaponMap.put("seventh", null);
 		paramMap.put("weaponMap", weaponMap);
 
-		Writer writer = new OutputStreamWriter(new FileOutputStream("../genauth/success.html"), "UTF-8");
+		Writer writer = new OutputStreamWriter(Files.newOutputStream(Paths.get("../genauth/success.html")), StandardCharsets.UTF_8);
 		template.process(paramMap, writer);
 		writer.flush();
 		writer.close();
 	}
 
+	/**
+	 *
+	 * @param: tableName
+	 * @return:
+	 */
 	// 一些公用的参数就一起封装一下。
 	private Map<String, Object> getCommonParam(String tableName) {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
+		Map<String, Object> paramMap = new HashMap<>();
 		String pojoName = CGUtil.getPOJONameByTableName(tableName);
 		paramMap.put("pojo_name", pojoName);
 		String moduleName = PropLoader.getPlanProp("plan.moduleName");

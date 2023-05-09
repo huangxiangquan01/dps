@@ -11,7 +11,7 @@ public class ZookeeperServerTest {
     public static void main(String[] args) {
 
         String connectString = "172.0.0.1:2181";
-        ZooKeeper zk;
+        ZooKeeper zk = null;
         try {
             zk = new ZooKeeper(connectString, 10,  event -> {
                 String path = event.getPath();                //负责监听的路径
@@ -23,7 +23,16 @@ public class ZookeeperServerTest {
 
              zk.create("/test", "1325".getBytes(),  ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (zk != null) {
+                try {
+                    zk.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
+            }
         }
     }
 }

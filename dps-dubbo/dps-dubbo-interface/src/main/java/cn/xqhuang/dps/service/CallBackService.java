@@ -2,7 +2,7 @@ package cn.xqhuang.dps.service;
 
 /**
  * @author huangxq
- * @description: TODO
+ * @description TODO
  * @date 2022/5/915:39
  */
 public interface CallBackService  {

@@ -1,0 +1,6 @@
+cn/xqhuang/dps/consumer/DemoServiceListenerImpl.class
+cn/xqhuang/dps/dubboInterceptor/ConsumerInterceptor.class
+cn/xqhuang/dps/consumer/Consumer.class
+cn/xqhuang/dps/DubboConsumerApplication.class
+cn/xqhuang/dps/WebInterceptor.class
+cn/xqhuang/dps/controller/HelloController.class

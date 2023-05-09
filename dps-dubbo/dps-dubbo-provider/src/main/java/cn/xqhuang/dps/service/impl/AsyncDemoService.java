@@ -2,14 +2,13 @@ package cn.xqhuang.dps.service.impl;
 
 import cn.xqhuang.dps.service.AsyncService;
 import org.apache.dubbo.common.URL;
-import org.apache.dubbo.config.annotation.Method;
-import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.AsyncContext;
 import org.apache.dubbo.rpc.RpcContext;
 
 import java.util.concurrent.CompletableFuture;
 
-@Service(version = "async")
+@DubboService(version = "async")
 public class AsyncDemoService implements AsyncService {
 
     @Override

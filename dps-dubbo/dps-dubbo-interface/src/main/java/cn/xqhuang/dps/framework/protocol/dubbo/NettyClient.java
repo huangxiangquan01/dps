@@ -19,7 +19,7 @@ public class NettyClient {
 
     public NettyClientHandel handel = null;
 
-    private static ExecutorService executorService = Executors.newCachedThreadPool();
+    private final static ExecutorService executorService = Executors.newCachedThreadPool();
 
     public void start(URL url, Invocation invocation) {
 
@@ -42,7 +42,7 @@ public class NettyClient {
             System.out.println("netty client start");
             bootstrap.connect(url.getHost(), url.getPort()).sync();
         }catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 
@@ -52,8 +52,8 @@ public class NettyClient {
         }
         try {
             return executorService.submit(handel).get();
-        }catch (Exception e) {
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }

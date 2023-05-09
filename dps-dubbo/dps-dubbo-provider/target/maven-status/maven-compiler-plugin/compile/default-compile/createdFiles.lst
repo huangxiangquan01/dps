@@ -1,0 +1,9 @@
+cn/xqhuang/dps/provider/Provider.class
+cn/xqhuang/dps/service/impl/RestDemoService.class
+cn/xqhuang/dps/service/impl/DefaultDemoService.class
+cn/xqhuang/dps/service/impl/CallBackDemoService.class
+cn/xqhuang/dps/service/impl/HelloServiceImpl.class
+cn/xqhuang/dps/service/impl/AsyncDemoService.class
+cn/xqhuang/dps/service/impl/GenericDemoService.class
+cn/xqhuang/dps/DubboProviderApplication.class
+cn/xqhuang/dps/service/impl/TimeoutDemoService.class

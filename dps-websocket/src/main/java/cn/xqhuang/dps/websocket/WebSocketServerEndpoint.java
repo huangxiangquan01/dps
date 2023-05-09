@@ -1,10 +1,6 @@
 package cn.xqhuang.dps.websocket;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.socket.WebSocketSession;
 
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
@@ -13,7 +9,7 @@ import java.io.IOException;
 
 /**
  * @author huangxq
- * @description: TODO
+ * @description
  * @date 2022/5/1109:25
  */
 
@@ -24,7 +20,7 @@ public class WebSocketServerEndpoint {
     /**
      * 连接成功
      *
-     * @param session
+     * @param: session
      */
     @OnOpen
     public void onOpen(Session session, @PathParam("uid") String uid) throws IOException {
@@ -36,7 +32,7 @@ public class WebSocketServerEndpoint {
     /**
      * 连接关闭
      *
-     * @param session
+     * @param: session
      */
     @OnClose
     public void onClose(Session session, @PathParam("uid") String uid) {
@@ -47,7 +43,7 @@ public class WebSocketServerEndpoint {
     /**
      * 接收到消息
      *
-     * @param text
+     * @param: text
      */
     @OnMessage
     public void onMsg(String text, @PathParam("uid") String uid) throws IOException {
@@ -56,8 +52,8 @@ public class WebSocketServerEndpoint {
 
     /**
      *
-     * @param session
-     * @param error
+     * @param: session
+     * @param: error
      */
     @OnError
     public void onError(Session session, Throwable error) {

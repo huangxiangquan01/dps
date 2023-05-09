@@ -29,6 +29,7 @@ cn/xqhuang/dps/utils/ListUtil.class
 cn/xqhuang/dps/utils/PasswordGeneratorUtil$1.class
 cn/xqhuang/dps/test/Xml2BeanTest.class
 cn/xqhuang/dps/utils/ParseTimeParam$CorpConsRecordsQueryParam.class
+cn/xqhuang/dps/guava/MapDemo.class
 cn/xqhuang/dps/model/BaseResult$1.class
 cn/xqhuang/dps/test/Xml2BeanTest$ScoreDomain.class
 cn/xqhuang/dps/utils/NanoIdUtils.class
@@ -43,6 +44,7 @@ cn/xqhuang/dps/utils/IpLongUtils.class
 cn/xqhuang/dps/utils/ObjectToMapUtils.class
 cn/xqhuang/dps/pdf/ITextRenderer3$1.class
 cn/xqhuang/dps/model/BaseResult.class
+cn/xqhuang/dps/guava/MapDemo$User.class
 cn/xqhuang/dps/utils/ExcelToListUtil$MethodUtils.class
 cn/xqhuang/dps/utils/ReflectionUtils$MethodFilter.class
 cn/xqhuang/dps/utils/ReflectionUtils$FieldFilter.class

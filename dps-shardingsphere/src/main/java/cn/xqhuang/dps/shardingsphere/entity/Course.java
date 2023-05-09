@@ -1,11 +1,9 @@
 package cn.xqhuang.dps.shardingsphere.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-
 /**
- * @author ：楼兰
+ * @author ：huangxq
  * @date ：Created in 2020/11/12
- * @description:
+ * @description
  **/
 
 public class Course {

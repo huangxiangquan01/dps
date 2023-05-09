@@ -2,7 +2,6 @@ package cn.xqhuang.dps.controller;
 
 import cn.xqhuang.dps.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +14,7 @@ public class StockController {
     @Autowired
     private StockService stockService;
  
-    @RequestMapping(value = "stock", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "stock")
     public Object stock() {
         // 商品ID
         long commodityId = 1;
@@ -28,14 +27,14 @@ public class StockController {
     /**
      * 获取初始的库存
      *
-     * @return
+     * @return:
      */
     private int initStock(long commodityId) {
         // TODO 这里做一些初始化库存的操作
         return 1000;
     }
  
-    @RequestMapping(value = "getStock", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "getStock")
     public Object getStock() {
         // 商品ID
         long commodityId = 1;
@@ -45,7 +44,7 @@ public class StockController {
         return stockService.getStock(redisKey);
     }
  
-    @RequestMapping(value = "addStock", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "addStock")
     public Object addStock() {
         // 商品ID
         long commodityId = 2;

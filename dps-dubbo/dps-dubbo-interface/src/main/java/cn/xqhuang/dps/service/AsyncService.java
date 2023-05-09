@@ -4,7 +4,7 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * @author huangxq
- * @description: TODO
+ * @description TODO
  * @date 2022/5/1014:24
  */
 public interface AsyncService {

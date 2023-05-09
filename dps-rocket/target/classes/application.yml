@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: rocket
+server:
+  port: 7999
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: my-group

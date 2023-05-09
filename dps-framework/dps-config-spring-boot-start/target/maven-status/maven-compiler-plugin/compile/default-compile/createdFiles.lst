@@ -1,0 +1,4 @@
+META-INF/spring-configuration-metadata.json
+cn/xqhuang/dps/HelloStarter.class
+cn/xqhuang/dps/HelloStarterAutoConfiguration.class
+cn/xqhuang/dps/HelloStarterProperties.class

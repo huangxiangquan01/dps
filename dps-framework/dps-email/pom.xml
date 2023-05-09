@@ -40,6 +40,11 @@
      <groupId>org.springframework.boot</groupId>
      <artifactId>spring-boot-starter-mail</artifactId>
    </dependency>
+
+   <dependency>
+     <groupId>com.github.cenbylin</groupId>
+     <artifactId>WxMessage-SDK</artifactId>
+   </dependency>
  </dependencies>
  
 </project>

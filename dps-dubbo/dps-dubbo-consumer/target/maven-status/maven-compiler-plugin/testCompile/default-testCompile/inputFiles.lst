@@ -1,0 +1,10 @@
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-dubbo/dps-dubbo-consumer/src/test/java/cn/xqhuang/dps/consumer/GenericDubboConsumerDemoTest.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-dubbo/dps-dubbo-consumer/src/test/java/cn/xqhuang/dps/consumer/AsyncDubboConsumerTest.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-dubbo/dps-dubbo-consumer/src/test/java/cn/xqhuang/dps/consumer/LoadBalanceDubboConsumerDemoTest.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-dubbo/dps-dubbo-consumer/src/test/java/cn/xqhuang/dps/consumer/DefaultDubboConsumerDemoTest.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-dubbo/dps-dubbo-consumer/src/test/java/cn/xqhuang/dps/consumer/ClusterDubboConsumerDemoTest.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-dubbo/dps-dubbo-consumer/src/test/java/cn/xqhuang/dps/consumer/MockDubboConsumerDemoTest.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-dubbo/dps-dubbo-consumer/src/test/java/cn/xqhuang/dps/consumer/StubDubboConsumerDemoTest.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-dubbo/dps-dubbo-consumer/src/test/java/cn/xqhuang/dps/consumer/base/DubboConsumerTest.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-dubbo/dps-dubbo-consumer/src/test/java/cn/xqhuang/dps/consumer/CallbackDubboConsumerDemoTest.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-dubbo/dps-dubbo-consumer/src/test/java/cn/xqhuang/dps/consumer/TimeoutDubboConsumerDemoTest.java

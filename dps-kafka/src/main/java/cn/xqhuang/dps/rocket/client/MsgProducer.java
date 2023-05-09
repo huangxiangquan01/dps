@@ -3,6 +3,7 @@ package cn.xqhuang.dps.rocket.client;
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
 
+import java.util.Arrays;
 import java.util.Properties;
 
 public class MsgProducer {
@@ -23,7 +24,7 @@ public class MsgProducer {
          /*
         发送失败会重试，默认重试间隔100ms，重试能保证消息发送的可靠性，但是也可能造成消息重复发送，比如网络抖动，所以需要在
         接收者那边做好消息接收的幂等性处理
-        *//*
+
         props.put(ProducerConfig.RETRIES_CONFIG, 3);
         //重试间隔设置
         props.put(ProducerConfig.RETRY_BACKOFF_MS_CONFIG, 300);
@@ -50,10 +51,11 @@ public class MsgProducer {
         int msgNum = 5;
         for (int i = 1; i <= msgNum; i++) {
             //指定发送分区
-            /*ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>(TOPIC_NAME
-                    , 0, order.getOrderId().toString(), JSON.toJSONString(order));*/
+            //ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>(TOPIC_NAME
+            //, 0, order.getOrderId().toString(), JSON.toJSONString(order));
+            //
             //未指定发送分区，具体发送的分区计算公式：hash(key)%partitionNum
-            ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>(TOPIC_NAME
+            ProducerRecord<String, String> producerRecord = new ProducerRecord<>(TOPIC_NAME
                     , i + "",  i + "");
 
             //等待消息发送成功的同步阻塞方法
@@ -65,7 +67,7 @@ public class MsgProducer {
             producer.send(producerRecord, new Callback() {
                 public void onCompletion(RecordMetadata metadata, Exception exception) {
                     if (exception != null) {
-                        System.err.println("发送消息失败：" + exception.getStackTrace());
+                        System.err.println("发送消息失败：" + Arrays.toString(exception.getStackTrace()));
 
                     }
                     if (metadata != null) {
@@ -76,7 +78,7 @@ public class MsgProducer {
                 }
             });
 
-            //送积分 TODO
+            //送积分
 
         }
 

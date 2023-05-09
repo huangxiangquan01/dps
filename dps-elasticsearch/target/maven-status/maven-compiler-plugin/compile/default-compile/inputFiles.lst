@@ -1,0 +1,6 @@
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-elasticsearch/src/main/java/cn/xqhuang/dps/entity/Student.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-elasticsearch/src/main/java/cn/xqhuang/dps/service/StudentService.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-elasticsearch/src/main/java/cn/xqhuang/dps/config/ElasticsearchConfig.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-elasticsearch/src/main/java/cn/xqhuang/dps/service/impl/StudentServiceImpl.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-elasticsearch/src/main/java/cn/xqhuang/dps/repository/StudentRepository.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-elasticsearch/src/main/java/cn/xqhuang/dps/ElasticsearchApplication.java

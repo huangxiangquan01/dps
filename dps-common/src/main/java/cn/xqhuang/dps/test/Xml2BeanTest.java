@@ -2,9 +2,6 @@ package cn.xqhuang.dps.test;
 
 import cn.xqhuang.dps.utils.XmlUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.*;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.*;
 import lombok.Data;
 

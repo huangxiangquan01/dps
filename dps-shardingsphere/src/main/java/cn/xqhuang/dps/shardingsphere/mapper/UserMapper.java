@@ -7,9 +7,9 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 /**
- * @author ：楼兰
+ * @author ：huangxq
  * @date ：Created in 2020/11/12
- * @description:
+ * @description
  **/
 public interface UserMapper extends BaseMapper<User> {
 

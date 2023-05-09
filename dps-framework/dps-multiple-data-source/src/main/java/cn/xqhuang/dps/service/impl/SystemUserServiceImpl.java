@@ -50,7 +50,6 @@ public class SystemUserServiceImpl implements SystemUserService {
 
             //子线程 这里的count代表有几个线程
             for (SystemUsers user : users) {
-                user.setRemark("2");
                 Thread g = new Thread(new WorkThread<>(systemUserMapper, user,
                         platformTransactionManager, transactionDefinition,
                         mainThreadLatch, rollBackLatch, rollbackFlag, message));

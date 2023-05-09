@@ -1,14 +1,23 @@
 package cn.xqhuang.dps.algorithms;
 
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.util.*;
 
 public class Solution {
 
+    /**
+     * 在一个无限的 x 坐标轴上，有许多水果分布在其中某些位置。
+     * 给你一个二维整数数组 fruits ，其中 fruits[i] = [positioni, amounti]
+     * 表示共有 amounti 个水果放置在 positioni 上。fruits 已经按 positioni 升序排列 ，
+     * 每个 positioni 互不相同 。
+     * 另给你两个整数 startPos 和 k 。最初，你位于 startPos 。
+     * 从任何位置，你可以选择 向左或者向右 走。在 x 轴上每移动 一个单位 ，
+     * 就记作 一步 。你总共可以走 最多 k 步。
+     * 你每达到一个位置，都会摘掉全部的水果，水果也将从该位置消失（不会再生）。
+     * 返回你可以摘到水果的 最大总数 。
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         // System.out.println(balancedString("WWEQERQWQWWRWWERQWEQ"));
         /*try (Scanner scanner = new Scanner(System.in)) {
@@ -22,40 +31,8 @@ public class Solution {
 
         // System.out.println(mergeSimilarItems(new int[]{7,4,8,9,7,7,5}));
     }
+    public int maxTotalFruits(int[][] fruits, int startPos, int k) {
 
-    public static List<List<Integer>> mergeSimilarItems(int[][] items1, int[][] items2) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < items2.length; i++) {
-            map.put(items2[i][0], items2[i][1]);
-        }
-        List<List<Integer>> res = new ArrayList<>();
-        for (int i = 0; i < items1.length; i++) {
-            List<Integer>  temp = new ArrayList<>();
-            int value = items1[i][0];
-            int weight = items1[i][1];
-            temp.add(value);
-            temp.add(map.getOrDefault(value, 0) + weight);
-
-            map.remove(value);
-            res.add(temp);
-        }
-        if (map.size() > 0) {
-            for(Integer key : map.keySet()) {
-                List<Integer>  temp = new ArrayList<>();
-                temp.add(key);
-                temp.add(map.get(key));
-
-                res.add(temp);
-            }
-        }
-
-        Collections.sort(res, new Comparator<List<Integer>>() {
-            @Override
-            public int compare(List<Integer> o1, List<Integer> o2) {
-                return o1.get(0) - o2.get(0);
-            }
-        });
-
-        return res;
+        return 0;
     }
 }

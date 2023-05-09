@@ -12,10 +12,12 @@
 /Users/huangxq/IdeaProjects/WorkSpace/dps/dps-framework/dps-dynamic-data-source/src/main/java/cn/xqhuang/dps/mapper/SystemUserMapper.java
 /Users/huangxq/IdeaProjects/WorkSpace/dps/dps-framework/dps-dynamic-data-source/src/main/java/cn/xqhuang/dps/transaction/TransactionalTemplate.java
 /Users/huangxq/IdeaProjects/WorkSpace/dps/dps-framework/dps-dynamic-data-source/src/main/java/cn/xqhuang/dps/plugin/MasterSlaveAutoRoutingPlugin.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-framework/dps-dynamic-data-source/src/main/java/cn/xqhuang/dps/multipleDataSources/EntryController.java
 /Users/huangxq/IdeaProjects/WorkSpace/dps/dps-framework/dps-dynamic-data-source/src/main/java/cn/xqhuang/dps/provider/DynamicDataSourceProvider.java
 /Users/huangxq/IdeaProjects/WorkSpace/dps/dps-framework/dps-dynamic-data-source/src/main/java/cn/xqhuang/dps/annotation/DS.java
 /Users/huangxq/IdeaProjects/WorkSpace/dps/dps-framework/dps-dynamic-data-source/src/main/java/cn/xqhuang/dps/holder/DynamicDataSourceContextHolder.java
 /Users/huangxq/IdeaProjects/WorkSpace/dps/dps-framework/dps-dynamic-data-source/src/main/java/cn/xqhuang/dps/holder/SavePointHolder.java
+/Users/huangxq/IdeaProjects/WorkSpace/dps/dps-framework/dps-dynamic-data-source/src/main/java/cn/xqhuang/dps/multipleDataSources/WorkThread.java
 /Users/huangxq/IdeaProjects/WorkSpace/dps/dps-framework/dps-dynamic-data-source/src/main/java/cn/xqhuang/dps/transaction/ConnectionProxy.java
 /Users/huangxq/IdeaProjects/WorkSpace/dps/dps-framework/dps-dynamic-data-source/src/main/java/cn/xqhuang/dps/service/impl/SystemUserServiceImpl.java
 /Users/huangxq/IdeaProjects/WorkSpace/dps/dps-framework/dps-dynamic-data-source/src/main/java/cn/xqhuang/dps/aop/DynamicDataSourceAnnotationInterceptor.java
