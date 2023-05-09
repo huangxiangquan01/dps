@@ -1,7 +1,0 @@
-cn/xqhuang/dps/service/impl/StudentServiceImpl.class
-cn/xqhuang/dps/service/StudentService.class
-cn/xqhuang/dps/ElasticsearchApplication.class
-cn/xqhuang/dps/config/ElasticsearchConfig.class
-cn/xqhuang/dps/repository/StudentRepository.class
-cn/xqhuang/dps/entity/Student$StudentBuilder.class
-cn/xqhuang/dps/entity/Student.class
