@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * @author huangxq
- * @description: TODO
+ * @description
  * @date 2022/11/714:41
  */
 @EnableWebSecurity
@@ -25,8 +25,8 @@ public class OAuth2SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      *  password 密码模式要使用此认证管理器
-     * @return
-     * @throws Exception
+     * @return:
+     * @throws: Exception
      */
     @Bean
     @Override
@@ -37,8 +37,8 @@ public class OAuth2SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 用户类信息
-     * @param auth
-     * @throws Exception
+     * @param: auth
+     * @throws: Exception
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

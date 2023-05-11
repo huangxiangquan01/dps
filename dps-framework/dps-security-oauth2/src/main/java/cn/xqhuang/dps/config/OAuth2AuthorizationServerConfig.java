@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -40,7 +39,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
     /**
      * druid数据源
-     * @return
+     * @return:
      */
     @Autowired
     private DataSource druidDataSource;
@@ -51,7 +50,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
      * 1.创建相关表
      * 2.添加jdbc相关依赖
      * 3.配置数据源信息
-     * @return
+     * @return:
      */
     @Bean
     public TokenStore jdbcTokenStore(){
@@ -85,7 +84,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
     /**
      * 使用 JDBC 方式管理客户端信息
-     * @return
+     * @return:
      */
     @Bean
     public ClientDetailsService jdbcClientDetailsService(){

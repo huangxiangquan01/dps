@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 
 /**
  * @author huangxq
- * @description: 资源服务器
+ * @description 资源服务器
  * @date 2022/11/714:49
  */
 @Configuration
@@ -48,7 +48,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
      * 如果认证服务器和资源服务器在同一个服务，则直接采用默认服务验证
      * 2.RemoteTokenServices
      * 当认证服务器和资源服务器不在同一个服务，要使用此服务器去远程认证服务器验证
-     * @return
+     * @return:
      */
     @Primary
     @Bean
