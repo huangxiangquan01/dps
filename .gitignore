@@ -45,5 +45,3 @@ nbdist/
 
 ### JRebel ###
 rebel.xml
-
-**/target/
