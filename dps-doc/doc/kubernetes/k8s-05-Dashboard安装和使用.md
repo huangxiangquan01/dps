@@ -1,6 +1,6 @@
 ## **Dashboard 安装和介绍**
 
-#### **1 dashboard 安装** 
+### **1 dashboard 安装** 
 
 第一步：安装文件和 image
 
