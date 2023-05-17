@@ -425,10 +425,10 @@ nodeSelector & nodeAffinity 都是基于 node label 进行调度。
 
 **PodAffinity 属性:**
 
-> podAffinity: 亲和性,  将 Pod 调度到有运行着的满足条件的 Pod 所在的 拓扑域
-> podAntiAffinity: 反亲和性, 不要将 Pod 调度到有运行着的满足条件的 Pod 所在的 拓扑域
-> requiredDuringSchedulingIgnoredDuringExecution: 功能类似于 nodeAffinity
-> preferredDuringSchedulingIgnoredDuringExecution: 功能类似于 nodeAffinity
+> - podAffinity: 亲和性,  将 Pod 调度到有运行着的满足条件的 Pod 所在的 拓扑域
+> - podAntiAffinity: 反亲和性, 不要将 Pod 调度到有运行着的满足条件的 Pod 所在的 拓扑域
+> - requiredDuringSchedulingIgnoredDuringExecution: 功能类似于 nodeAffinity
+> - preferredDuringSchedulingIgnoredDuringExecution: 功能类似于 nodeAffinity
 
 PodAffinity 规则设置的注意事项如下 。
 
