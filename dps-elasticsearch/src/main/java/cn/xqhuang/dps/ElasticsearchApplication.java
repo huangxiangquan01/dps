@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author huangxq
- * @description TODO
- * @date 2022/5/1117:07
+ * @description es
+ * @date 2022/5/11 17:07
  */
 @SpringBootApplication
 public class ElasticsearchApplication {
