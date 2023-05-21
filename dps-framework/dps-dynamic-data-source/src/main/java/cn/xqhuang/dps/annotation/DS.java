@@ -7,5 +7,5 @@ import java.lang.annotation.*;
 @Inherited
 @Documented
 public @interface DS {
-    String value();
+    String value() default "";
 }

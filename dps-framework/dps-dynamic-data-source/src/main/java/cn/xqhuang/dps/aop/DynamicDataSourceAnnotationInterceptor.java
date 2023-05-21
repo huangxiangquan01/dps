@@ -45,15 +45,15 @@ public class DynamicDataSourceAnnotationInterceptor{
         DS annotation = null;
 
         Signature signature = joinPoint.getSignature();
-
+        String dsKey = "";
         if (signature instanceof MethodSignature) {
             MethodSignature methodSignature = (MethodSignature) signature;
             Method method = methodSignature.getMethod();
             if (method != null) {
                 annotation = method.getAnnotation(DS.class);
+                dsKey = annotation.value();
             }
         }
-        String dsKey = annotation.value();
         DynamicDataSourceContextHolder.push(dsKey);
         try {
             return joinPoint.proceed();

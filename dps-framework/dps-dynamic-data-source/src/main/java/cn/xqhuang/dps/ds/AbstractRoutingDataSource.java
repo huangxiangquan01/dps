@@ -19,6 +19,7 @@ import cn.xqhuang.dps.holder.DynamicDataSourceContextHolder;
 import cn.xqhuang.dps.transaction.ConnectionFactory;
 import cn.xqhuang.dps.transaction.ConnectionProxy;
 import cn.xqhuang.dps.transaction.TransactionContext;
+import com.sun.istack.NotNull;
 import org.springframework.jdbc.datasource.AbstractDataSource;
 import org.springframework.util.StringUtils;
 
@@ -82,15 +83,15 @@ public abstract class AbstractRoutingDataSource extends AbstractDataSource {
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T> T unwrap(Class<T> iface) throws SQLException {
-        if (iface.isInstance(this)) {
+    public <T> T unwrap(Class<T> iFace) throws SQLException {
+        if (iFace.isInstance(this)) {
             return (T) this;
         }
-        return determineDataSource().unwrap(iface);
+        return determineDataSource().unwrap(iFace);
     }
 
     @Override
-    public boolean isWrapperFor(Class<?> iface) throws SQLException {
-        return (iface.isInstance(this) || determineDataSource().isWrapperFor(iface));
+    public boolean isWrapperFor(Class<?> iFace) throws SQLException {
+        return (iFace.isInstance(this) || determineDataSource().isWrapperFor(iFace));
     }
 }

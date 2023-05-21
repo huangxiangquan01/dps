@@ -27,9 +27,10 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
 import java.lang.reflect.Method;
+import java.util.Objects;
 
 /**
- * @author huangxqs
+ * @author huangxq
  */
 @Slf4j
 public class DynamicLocalTransactionInterceptor {
@@ -61,9 +62,11 @@ public class DynamicLocalTransactionInterceptor {
             @Override
             public TransactionalInfo getTransactionInfo() {
                 TransactionalInfo transactionInfo = new TransactionalInfo();
-                transactionInfo.setPropagation(dsTransactional.propagation());
-                transactionInfo.setNoRollbackFor(dsTransactional.noRollbackFor());
-                transactionInfo.setRollbackFor(dsTransactional.rollbackFor());
+                if (Objects.nonNull(dsTransactional)) {
+                    transactionInfo.setPropagation(dsTransactional.propagation());
+                    transactionInfo.setNoRollbackFor(dsTransactional.noRollbackFor());
+                    transactionInfo.setRollbackFor(dsTransactional.rollbackFor());
+                }
                 return transactionInfo;
             }
         };
