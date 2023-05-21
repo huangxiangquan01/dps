@@ -115,7 +115,7 @@ spec: #必选，Pod中容器的详细定义
 ```
 #### 3.Yaml 文件创建 Pod
 ```shell
-kubectl run nginx --image=nginx:1.9 --port=80 --dry-run=client -o yaml>nginx.yaml
+kubectl run nginx --image=nginx --port=80 --dry-run=client -o yaml>nginx.yaml
 
 cat nginx.yaml
 ```
@@ -129,7 +129,7 @@ metadata:
   name: nginx
 spec:
   containers:
-  - image: nginx:1.9
+  - image: nginx
   name: nginx
   ports:
   - containerPort: 80
@@ -139,17 +139,17 @@ spec:
 status: {}
 ```
 #### 4.多容器 Pod 创建
-```shell
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-  run: nginx
+    run: nginx
   name: multi-container
 spec:
   containers:
-  - image: nginx:1.9
+  - image: nginx
     name: nginx
     ports:
     - containerPort: 80
@@ -294,7 +294,7 @@ LivenessProbe 和 ReadinessProbe 均可配置以下三种实现方式
   livenessProbe:
           httpGet:
             port: 80
-            path: /_status/healthz
+            path: /_status/health 
           initialDelaySeconds: 30
           periodSeconds: 3
   ```

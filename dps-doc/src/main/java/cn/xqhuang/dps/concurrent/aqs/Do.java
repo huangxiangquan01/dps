@@ -1,8 +1,5 @@
 package cn.xqhuang.dps.concurrent.aqs;
 
-import org.apache.poi.ss.formula.functions.T;
-import sun.awt.windows.ThemeReader;
-
 import java.util.concurrent.locks.LockSupport;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -66,7 +63,7 @@ public class Do {
             try {
                 lock.lock();
             } catch (Exception e) {
-
+                e.printStackTrace();
             } finally {
                 lock.unlock();
                 System.out.println(Thread.currentThread().getName() + "解锁");
@@ -78,7 +75,7 @@ public class Do {
             System.out.println(111111);
             Thread.sleep(1000000);
         } catch (Exception e) {
-
+            e.printStackTrace();
         } finally {
             lock.unlock();
         }
