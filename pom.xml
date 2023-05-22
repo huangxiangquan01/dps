@@ -12,6 +12,7 @@
   <modules>
     <module>dps-admin</module>
     <module>dps-actuator</module>
+    <module>dps-simple-code</module>
     <module>dps-doc</module>
     <module>dps-common</module>
     <module>dps-flowable</module>
