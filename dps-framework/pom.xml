@@ -26,5 +26,6 @@
     <module>dps-email</module>
     <module>dps-oss</module>
     <module>dps-multiple-data-source</module>
+    <module>dps-statemachine</module>
   </modules>
 </project>
