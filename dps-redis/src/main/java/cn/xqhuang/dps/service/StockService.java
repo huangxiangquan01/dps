@@ -1,6 +1,7 @@
 package cn.xqhuang.dps.service;
 
 import cn.xqhuang.dps.callback.IStockCallback;
+import cn.xqhuang.dps.redisUtil.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -149,7 +150,7 @@ public class StockService {
         try {
             if (redisLock.tryLock()) {
                 // 获取到锁后再次判断一下是否有key
-                hasKey = redisTemplate.hasKey(key);
+                hasKey = Boolean.TRUE.equals(redisTemplate.hasKey(key));
                 if (!hasKey) {
                     // 初始化库存
                     redisTemplate.opsForValue().set(key, num, expire, TimeUnit.SECONDS);
@@ -190,7 +191,7 @@ public class StockService {
         List<String> args = new ArrayList<>();
         args.add(Integer.toString(num));
  
-        long result = redisTemplate.execute((RedisCallback<Long>) connection -> {
+        return redisTemplate.execute((RedisCallback<Long>) connection -> {
             Object nativeConnection = connection.getNativeConnection();
             // 集群模式和单机模式虽然执行脚本的方法一样，但是没有共同的接口，所以只能分开执行
             // 集群模式
@@ -204,6 +205,5 @@ public class StockService {
             }
             return UNINITIALIZED_STOCK;
         });
-        return result;
     }
 }
