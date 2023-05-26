@@ -1,7 +1,0 @@
-spring:
-  mail:
-    host: smtp.163.com
-    username: huangxiangquan@qq.com
-    password:
-    port: 465
-    protocol: smtp
