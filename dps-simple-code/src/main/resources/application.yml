@@ -1,2 +1,10 @@
 server:
   port: 8091
+
+# https://github.com/lining0806/TextFilter/blob/master/敏感词库大全.txt
+spring:
+  redis:
+    #数据库索引
+    database: 0
+    host: 192.168.31.28
+    port: 6379
