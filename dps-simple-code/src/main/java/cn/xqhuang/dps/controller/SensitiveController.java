@@ -10,9 +10,8 @@ import java.io.IOException;
 @RestController
 public class SensitiveController {
 
-    @Autowired
+    @Autowired(required = false)
     SensitiveFilter sensitiveFilter;
-
 
     @GetMapping("/sensitive")
     public String sensitive(String keyword){

@@ -15,7 +15,7 @@ import java.util.Set;
  * @Description 敏感词过滤器：利用DFA算法  进行敏感词过滤
  * @date 2023/5/22 18:19
  */
-@Component
+// @Component
 public class SensitiveFilter {
     /**
      * 敏感词过滤器：利用DFA算法  进行敏感词过滤

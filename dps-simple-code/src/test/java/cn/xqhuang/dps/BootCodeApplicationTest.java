@@ -1,5 +1,7 @@
 package cn.xqhuang.dps;
 
+import cn.xqhuang.dps.exception.enums.CommonResponseEnum;
+import cn.xqhuang.dps.exception.enums.ServletResponseEnum;
 import cn.xqhuang.dps.filter.SensitiveFilter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,5 +39,10 @@ public class BootCodeApplicationTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void exceptionTest() {
+        ServletResponseEnum.ConversionNotSupportedException.newException("111");
     }
 }

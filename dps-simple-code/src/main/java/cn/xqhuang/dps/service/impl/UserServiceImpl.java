@@ -3,7 +3,6 @@ package cn.xqhuang.dps.service.impl;
 import cn.xqhuang.dps.entity.User;
 import cn.xqhuang.dps.service.UserService;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;

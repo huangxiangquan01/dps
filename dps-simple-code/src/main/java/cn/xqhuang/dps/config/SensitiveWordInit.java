@@ -18,7 +18,7 @@ import java.util.Set;
  * @Description 初始化
  * @date 2023/5/22 18:20
  */
-@Configuration
+// @Configuration
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class SensitiveWordInit {
     // 字符编码
