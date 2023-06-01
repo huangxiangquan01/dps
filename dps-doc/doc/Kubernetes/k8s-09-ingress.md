@@ -1,4 +1,4 @@
-# **10.K8s Ingress and 网络**
+# **09.K8s Ingress and 网络**
 
 > https://github.com/kubernetes/ingress-nginx
 >
@@ -32,6 +32,7 @@ kind: Ingress
 metadata:
   name: test2
 spec:
+  ingressClassName: nginx
   rules:
     - host: test2.bar.com
       http:
