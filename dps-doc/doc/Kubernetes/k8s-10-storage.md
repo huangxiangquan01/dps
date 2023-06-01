@@ -304,3 +304,5 @@ kubectl delete -f csi-nfs-driverinfo.yaml --ignore-not-found
 kubectl delete -f rbac-csi.yaml --ignore-not-found
 ```
 
+>https://blog.csdn.net/qq_40722827/article/details/127948651
+>https://blog.csdn.net/weixin_43313333/article/details/128666197

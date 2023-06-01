@@ -282,7 +282,15 @@ args:
 kubectl apply -f kube-flannel.yaml
 kubectl get ds -l app=flannel -n kube-system
 ```
-
+> **Coredns**
+>
+> 在每个节点创建文件/run/flannel/subnet.env写入以下内容。注意每个节点都要加哦，不是主节点
+>```
+>FLANNEL_NETWORK=10.244.0.0/16 # 对应kubeadm --pod-network-cidr
+>FLANNEL_SUBNET=10.244.0.1/24
+>FLANNEL_MTU=1450
+>FLANNEL_IPMASQ=true
+>```
 然后使用命令 kubectl get pods -n kube-system 查看运行状态，1 代表运行中；
 
 最后再次使用kubectl get nodes查看集群中的工作节点；可以看到处于开机状态的 master 节点和 node2 节点已经是 ready 状态，处于关闭状态的 node1 节点为 NoReady 状态，测试无误
@@ -349,4 +357,14 @@ rm-rf /etc/kubernetes
 rm -rf /root/.kube/config
 rm -rf /var/lib/etcd
 above is necessary, cnI0 address conflict to setup sandbox. 
+```
+
+**Join证书过期**
+```yaml
+kubeadm token create --print-join-command
+
+然后把master节点的~/.kube/config文件拷贝到当前NODE
+
+node role change
+kubectl label nodes k8s-master node-role.kubernetes.io/node=
 ```
