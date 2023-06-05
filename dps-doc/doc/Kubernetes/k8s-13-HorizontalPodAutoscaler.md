@@ -23,7 +23,7 @@ HPA Controller 周期性(默认每 30s 一次，可通过 kube-controller-manage
 ** 下载部署清单文件**
 
 ```sh
-wget https://github.com/kubernetes-sigs/metricsserver/releases/download/v0.3.6/components.yaml
+wget https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 ```
 **修改 components.yaml 文件**
 
