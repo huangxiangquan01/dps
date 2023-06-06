@@ -1,0 +1,17 @@
+
+
+server:
+  undertow:
+    access-log:
+      # 是否打开 undertow 日志，默认为 false
+      enabled: false
+      # 设置访问日志所在目录
+      dir: logs
+    # 指定工作者线程的 I/0 线程数，默认为 2 或者 CPU 的个数
+    io-threads:
+    # 指定工作者线程个数，默认为 I/O 线程个数的 8 倍
+    worker-threads:
+    # 设置 HTTP POST 内容的最大长度，默认不做限制
+    max-http-post-size: 0
+  # 指定工作者线程的 I/0 线程数，默认为 2 或者 CPU 的个数
+
