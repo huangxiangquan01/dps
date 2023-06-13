@@ -4,8 +4,17 @@
 ```shell
 docker run --name jenkins -u root --rm -d -p 8070:8080 -p 50000:50000 \
 -v /Users/huangxq/docker/jenkins/jenkins_home:/var/jenkins_home \
--v /Users/huangxq/docker/jenkins/docker.sock:/var/run/docker.sock \
-jenkinsci/blueocean
+-v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins
+
+# 使用socat镜像开启服务
+docker run -d --name socat --restart always -p 2375:2375 -v /var/run/docker.sock:/var/run/docker.sock alpine/socat tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
+
+# 配置
+vi ~/.bash_profile
+export DOCKER_HOST=tcp://localhost:2375
+
+# 重启生效
+source .bash_profile
 ```
 ### 2.初始化Jenkins
 #### 2.1 解锁Jenkins
