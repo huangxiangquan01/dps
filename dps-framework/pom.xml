@@ -21,11 +21,13 @@
     <module>dps-excel</module>
     <module>dps-security-oauth2</module>
     <module>dps-desensitize</module>
+    <module>dps-disruptor</module>
     <module>dps-jasypt</module>
     <module>dps-quartz</module>
     <module>dps-email</module>
     <module>dps-oss</module>
     <module>dps-multiple-data-source</module>
     <module>dps-statemachine</module>
+    <module>dps-jwt</module>
   </modules>
 </project>
