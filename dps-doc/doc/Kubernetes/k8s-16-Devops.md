@@ -323,3 +323,35 @@ Manage Jenkins->Manage Credential->adding 类型为 Username with password
 ### **6.图形化界面 BlueOcean** 
 
 BlueOcean 是 Jenkins 团队从用户体验角度出发，专为 Jenkins Pipeline 重新设计的一套 UI 界面，仍然兼容以前的 fressstyle 类型的 job，BlueOcean 具有以下的一些特性：连续交付（CD）Pipeline 的复杂可视化，允许快速直观的了解 Pipeline 的状态可以通过 Pipeline 编辑器直观的创建 Pipeline需要干预或者出现问题时快速定位，BlueOcean 显示了 Pipeline 需要注意的地方，便于异常处理和提高生产力用于分支和拉取请求的本地集成可以在 GitHub 或者 Bitbucket 中与其他人进行代码协作时最大限度提高开发人员的生产力。BlueOcean 可以安装在现有的 Jenkins 环境中，也可以使用 Docker 镜像的方式直接运行，我们这里直接在现有的 Jenkins 环境中安装 BlueOcean 插件：登录 Jenkins Web UI -> 点击左侧的 Manage Jenkins -> Manage Plugins -> Available -> 搜索查找 BlueOcean -> 点击下载安装并重启。
+
+## **三.Jenkins Pipeline** 
+
+> 自 Jenkins 2.0 版本升级之后，支持了通过代码（Groovy DSL）来描述一个构建流水线，灵活方便地实现持续交付，大大提升 Jenkins Job 维护的效率，实现从 CI 到 CD 到转变。而在 2016 Jenkins World 大会上，Jenkins 发布了 1.0 版本的声明式流水线 -Declarative Pipeline，目前已经到发布了 1.2 版本，它是一种新的结构化方式定义一个流水线。
+
+### **1.Pipeline 特性 - Pipeline As Code** 
+
+Jenkins 从根本上讲是一种支持多种自动化模式的自动化引擎。Pipeline 为其添加了一套强大的自动化工具，支持从简单的持续集成到全面的持续交付。Jenkins Pipeline 特性如下：
+
+- 代码：Pipeline 以代码的形式描述，通常存储于源代码控制系统，如 Git，使团队能够编辑，审查和迭代其流程定义。
+
+- 持久性：Pipeline 可以在计划和计划外重新启动 Jenkins Master 管理时不被影响。
+
+- 可暂停：Pipeline 可以选择停止并等待人工输入或批准，然后再继续 Pipeline 运行。
+
+- 多功能：Pipeline 支持复杂的项目持续交付要求，包括并行分支/连接，循环和执行 Job 的能力。
+
+- 可扩展：Pipeline 插件支持其 DSL 的自定义扩展以及与其他插件集成。
+
+基于 Jenkins Pipeline，用户可以在一个 JenkinsFile 中快速实现一个项目的从构建、测试以到发布的完整流程，并且可以保存这个流水线的定义。
+
+### **2.Pipeline 基本概念** 
+
+Node: 一个 Node 就是一个 Jenkins 节点，或者是 Master，或者是 Agent，是执行 Step 的具体运行环境，Pipeline 执行中的大部分工作都是在一个或多个声明 Node 步骤的上下文中完成的。
+
+Stage: 一个 Pipeline 可以从逻辑上划分为若干个 Stage，每个 Stage 代表一组操作，如：Build、Test、Deploy。注意，Stage 是一个逻辑分组的概念，可以跨多个 Node。
+
+Step: Step 是最基本的操作单元，小到执行一个 Shell 脚本，大到构建一个 Docker 镜像，由各类 Jenkins Plugin 提供，当插件扩展 Pipeline DSL 时，通常意味着插件已经实现#了一个新的步骤。
+
+### **3.Scripted Pipeline** 
+
+CurrentBuild 可以获取档次执行的结果，可以用于判读后续流程走向，Jenkins 还提供了更多内置环境变量以及 DSL 对象，方便我们操作流水线任务，如：BUILD_ID、JOB_NAME、BRANCH_NAME、CHANGE_ID 等等，可参考 Global Variable。这种方式受 Jenkins 的限制较少，我们可以灵活控制和定义一个流水线，甚至我们可以在 JenkinsFile 中定义多个 Groovy 函数来扩展 Jenkins Pipeline 的能力。
