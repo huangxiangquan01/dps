@@ -2,6 +2,10 @@ package cn.xqhuang.dps.algorithms;
 
 
 import java.io.IOException;
+import java.sql.Array;
+import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Solution {
 
@@ -29,10 +33,30 @@ public class Solution {
         // BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         // String str = br.readLine();
 
-        // System.out.println(mergeSimilarItems(new int[]{7,4,8,9,7,7,5}));
+        System.out.println(minDeletion(new int[]{1 ,1, 2, 2, 3, 3}));
     }
     public int maxTotalFruits(int[][] fruits, int startPos, int k) {
 
         return 0;
+    }
+
+    public static int minDeletion(int[] nums) {
+        int n = nums.length;
+
+        int index = 0;
+
+        int res = 0;
+        while (index < n - 1) {
+            if (index % 2 == 0 && nums[index] == nums[index + 1]) {
+                res++;
+            }
+
+            index++;
+        }
+        if ((n - res) % 2 != 0) {
+            return res + 1;
+        }
+
+        return res;
     }
 }
