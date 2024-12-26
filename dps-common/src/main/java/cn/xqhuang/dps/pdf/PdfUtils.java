@@ -2,19 +2,38 @@ package cn.xqhuang.dps.pdf;
 
 import cn.xqhuang.dps.utils.DateUtil;
 import com.alibaba.fastjson.JSON;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfDocument;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.tool.xml.Pipeline;
+import com.itextpdf.tool.xml.XMLWorker;
+import com.itextpdf.tool.xml.XMLWorkerFontProvider;
+import com.itextpdf.tool.xml.XMLWorkerHelper;
+import com.itextpdf.tool.xml.html.CssAppliersImpl;
+import com.itextpdf.tool.xml.html.Tags;
+import com.itextpdf.tool.xml.net.FileRetrieve;
+import com.itextpdf.tool.xml.net.ReadingProcessor;
+import com.itextpdf.tool.xml.pipeline.css.CSSResolver;
+import com.itextpdf.tool.xml.pipeline.css.CssResolverPipeline;
+import com.itextpdf.tool.xml.pipeline.end.PdfWriterPipeline;
+import com.itextpdf.tool.xml.pipeline.html.*;
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.cache.FileTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
-import org.apache.commons.lang3.StringUtils;
 import org.xhtmlrenderer.context.StyleReference;
 import org.xhtmlrenderer.layout.SharedContext;
 import org.xhtmlrenderer.pdf.ITextFontResolver;
 import org.xhtmlrenderer.pdf.ITextRenderer;
+import sun.net.www.protocol.http.HttpURLConnection;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -29,13 +48,13 @@ public class PdfUtils {
         ByteArrayOutputStream os = null;
         try {
             String content = getContent(fileName, data);
-
-            File file = new File("/Users/huangxq/Desktop/"+fileName + ".pdf");
+            System.out.println(content);
+            File file = new File("/Users/huangxiangquan/Desktop/2.pdf");
             File fileParent = file.getParentFile();
             if (!fileParent.exists()) {
                 fileParent.mkdirs();
             }
-            // url = new File(getContent).toURI().toURL().toString();
+            // String url = new File(content).toURI().toURL().toString();
             // os = new FileOutputStream(pdfFile);
             os = new ByteArrayOutputStream();
 
@@ -44,14 +63,14 @@ public class PdfUtils {
             renderer.getSharedContext().getTextRenderer().setSmoothingThreshold(0);
             renderer.setDocumentFromString(content);
 
-            BaseFont font = BaseFont.createFont("/fonts/SIMSUN.TTC,1", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-            renderer.setPdfPageEvent(new PageXofYTest2(font));
+            // BaseFont font = BaseFont.createFont("/fonts/simsun.ttc, 0", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            // renderer.setPdfPageEvent(new PageXofYTest2(font));
             // 解决中文不显示问题
             ITextFontResolver fontResolver = renderer.getFontResolver();
             fontResolver.addFont("/fonts/SIMSUN.TTC", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 
             renderer.layout();
-            renderer.createPDF(os);
+            renderer.createPDF(os, true);
 
             renderer.finishPDF();
             byte[] buff = os.toByteArray();
@@ -67,6 +86,51 @@ public class PdfUtils {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    public static void html2pdf1(String fileName, Object data)  {
+        // step 1
+        try {
+            String purchaseOrder = getContent(fileName, data);
+
+            // 创建Document对象
+            Document document = new Document(new RectangleReadOnly(842.0F, 595.0F));
+            // 创建PdfWriter对象
+            PdfWriter writer = PdfWriter.getInstance(document, Files.newOutputStream(Paths.get("/Users/huangxiangquan/Desktop/1.pdf")));
+
+            // 添加页眉页脚
+
+            // 设置字体
+            //BaseFont base = BaseFont.createFont("classpath:/fonts/simsun.ttc", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+
+            // 打开Document
+            document.open();
+            // 加载HTML文件
+            XMLWorkerHelper.getInstance().parseXHtml(writer, document, new ByteArrayInputStream(purchaseOrder.getBytes(StandardCharsets.UTF_8)),
+                    PdfUtils.class.getResourceAsStream(""), StandardCharsets.UTF_8,
+                    new XMLWorkerFontProvider() {
+                        @Override
+                        public Font getFont(final String fontName, final String encoding, final boolean embedded, final float size, final int style, final BaseColor color) {
+                            BaseFont bf = null;
+                            try {
+                                bf = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", BaseFont.EMBEDDED);
+                                Font font = new Font(bf, size, style, color);
+                                font.setColor(color);
+                                // log.info("PDF文档字体初始化完成!");
+                                return font;
+                            } catch (Exception e) {
+
+                            }
+                            return null;
+                        }
+                    });
+
+            // 关闭Document
+            document.close();
+            System.out.println("PDF转换完成！");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

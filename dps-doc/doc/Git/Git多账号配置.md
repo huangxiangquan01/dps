@@ -10,12 +10,12 @@ git config --global --unset user.email
 ### 2. 生成密钥对
 默认情况下，密钥对保存路径为~/.ssh，根据自己的情况，判断选择是否全部清空密钥对（id_rsa、id_rsa.pub 这些公钥和密钥文件），我这里是懒得更改旧的GItHub配置（用的是默认命名的文件），所以没删除，生成公司GitHub使用的密钥对：
 ```shell
-ssh-keygen -t rsa -C "jack.wen@xxx-email.com"
+ssh-keygen -t rsa -C "huangxiangquan@yintatech.com"
 ```
 如果熟悉生成密钥对的知道执行该命令后需要进行3次或4次确认：
 - 重点这一步：确认秘钥的保存路径，这里我们不采用默认命名id_rsa，增加一些后缀以便区分，例如改成id_rsa_gitlab：
 ```shell
-Enter file in which to save the key (/Users/wenwl/.ssh/id_rsa):/Users/wenwl/.ssh/id_rsa_gitlab
+Enter file in which to save the key (/Users/huangxiangquan/.ssh/id_rsa):/Users/huangxiangquan/.ssh/id_rsa_gitlab
 ```
 - 如果上一步保存路径下已经有秘钥文件，则需要确认是否覆盖（如果之前的秘钥不再需要则直接回车覆盖，如需要则手动拷贝到其他目录后再覆盖）
 
@@ -83,3 +83,13 @@ git config --local user.email "jack.wen@xxx-email.com"
 可以执行git config --local --list查看本地仓库配置的信息。
 
 > https://www.wenwl.site/pages/dfb4d0/#%E9%85%8D%E7%BD%AE%E5%A4%9A%E8%B4%A6%E5%8F%B7
+
+
+### 查看分支是基于哪个分支创建
+git reflog show 分支名 或 git reflog --date=local | grep 分支名 都可以
+> git reflog show branch
+
+
+```shell
+git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --after="2023-12-01 00:00:00" --before="2024-12-31 23:59:59" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "新增行数 lines: %s, 删除行数 lines: %s, 总行数: %s\n", add, subs, loc }' -; done
+```

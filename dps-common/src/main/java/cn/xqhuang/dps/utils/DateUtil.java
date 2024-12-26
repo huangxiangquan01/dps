@@ -440,6 +440,7 @@ public class DateUtil {
     }
 
     public static void main(String[] args) throws Exception {
+        System.out.println(DateUtil.format(new Date(), "yyMMdd"));
 //		System.out.println(getFirstDay("2019-04-03 00:00:00", 0));
 //		System.out.println(getLastDay("2019-04-03 00:00:00", 0));
 //		System.out.println(getBetweenDay("2019-04-01", "2019-04-30"));
@@ -537,6 +538,5 @@ public class DateUtil {
         }
         return indexes;
     }
-
 
 }
