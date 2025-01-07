@@ -1,7 +1,6 @@
 package cn.xqhuang.dps.entity;
 
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
 @Getter
 @Setter

@@ -1,4 +1,5 @@
-package cn.xqhuang.dps;
+/*
+package cn.xqhuang.dps.config;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -17,3 +18,4 @@ public class MongoConfig {
         return new MongoTemplate(mongoClient(), "test");
     }
 }
+*/
