@@ -11,7 +11,6 @@ import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +26,6 @@ import org.springframework.context.annotation.Configuration;
 public class OssAutoConfiguration {
 
     @Bean
-    @ConditionalOnMissingBean
     public AmazonS3 ossClient(OssProperties ossProperties) {
         // 客户端配置，主要是全局的配置信息
         ClientConfiguration clientConfiguration = new ClientConfiguration();

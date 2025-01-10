@@ -3,7 +3,7 @@ server:
 
 spring:
   oss:
-    endpoint: https://oss-cn-nanjing.aliyuncs.com
-    region: oss-cn-nanjing
-    accessKey:
-    secretKey:
+    endpoint: http://124.221.90.139:9000
+    region: cn
+    accessKey: CKDuEnHKU3gLJhM1q09D
+    secretKey: bGTVY7l2aRkuM0a9y2jY6Q9h0mu5DY8i2QojA8Db
