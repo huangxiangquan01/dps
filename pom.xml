@@ -36,6 +36,7 @@
     <module>dps-skywalking</module>
     <module>dps-fasc</module>
     <module>dps-itextpdf</module>
+    <module>dps-statemachine</module>
   </modules>
 
   <groupId>cn.xqhuang.dps</groupId>
