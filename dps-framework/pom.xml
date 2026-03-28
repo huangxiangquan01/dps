@@ -8,11 +8,11 @@
     <artifactId>dps</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  
+
   <artifactId>dps-framework</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  
+
   <modules>
     <module>dps-code-gen</module>
     <module>dps-config-spring-boot-start</module>
@@ -27,7 +27,6 @@
     <module>dps-email</module>
     <module>dps-oss</module>
     <module>dps-multiple-data-source</module>
-    <module>dps-statemachine</module>
     <module>dps-jwt</module>
   </modules>
 </project>
