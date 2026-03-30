@@ -9,6 +9,7 @@ print(conn)
 --设置数据库的编码格式
 conn:execute"SET NAMES UTF-8"
 
+
 --执行数据库操作
 local cur=conn:execute("select * from t_user")
 
